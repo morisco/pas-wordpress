@@ -1,0 +1,80 @@
+<section class="today">
+  <div class="today__background">
+    <img src="{{site.theme.link}}/dist/images/background.jpg" alt="Image of Full Synagogue" class="desktop-bg" />
+    <img src="{{site.theme.link}}/dist/images/background-mobile.jpg" alt="Image of Full Synagogue" class="mobile-bg" />
+  </div>
+  <div class="today__inner">
+    <div class="today__day">
+      <div class="today__day__inner">
+        <h4>{{today_data.today_string}}</h4>
+        <div class="today__day__holiday">
+          <div class="hebrew">{{today_data.today_hebrew}}</div>
+          <h2>{{today_data.current_holiday|raw}}</h2>
+          {% if today_data.holiday_day %}
+            <h4 class="today__day__holiday__day">Day {{today_data.holiday_day}}</h4>
+          {% endif %}
+        </div>
+      </div>
+      <div class="today__day__watch">
+        <h4>תְפִלָה</h4>
+        <div class="today__day__holiday">
+          <h2>High<br/>Holiday<br/>Services</h2>
+          <h4 class="today__day__holiday__day">Full Schedule</h4>
+        </div>
+      </div>
+    </div>
+    <div class="today__cards">
+      <div class="today_today">
+        {% if welcome_data.welcome_card_enabled %}
+          <div class="card card--welcome">
+            <div class="card__inner">
+              <h3>{{welcome_data.welcome_card_title}}</h3>
+              <div className="card__inner__content">
+                {{welcome_data.welcome_card_content | raw}}
+              </div>
+            </div>
+          </div>
+          <div class="card card--help" id="show-help">
+            <h5>help with getting connected</h5>
+            <button class="arrow-button">→ all your questions answered</button>
+          </div>
+        {% endif %}
+        
+      
+        {% for card_obj in todays_cards %}
+          {% if card_obj.card.post_type is same as('service') %}
+            {% include 'partial/cards/service.twig' with { card: card_obj.card} %}
+          {% elseif card_obj.card.post_type is same as('class') %}
+            {% include 'partial/cards/class.twig' with { card: card_obj.card} %}
+          {% elseif card_obj.card.post_type is same as('article') %}
+            {% include 'partial/cards/article.twig' with { card: card_obj.card} %}
+          {% elseif card_obj.card.post_type is same as('video') %}
+            {% include 'partial/cards/video.twig' with { card: card_obj.card} %}
+          {% else %}
+          {% endif %}
+          {% if loop.index is same as(1) %}
+            {% if not welcome_data.welcome_card_enabled %}
+              <div class="card card--help" id="show-help">
+                <h5>help with getting connected</h5>
+                <button class="arrow-button">→ all your questions answered</button>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="today__watch">
+        {% for card_obj in upcoming_watch %}
+          {% if card_obj.post_type is same as('service') %}
+            {% include 'partial/cards/video.twig' with { card: card_obj, watch: true} %}
+          {% endif %}
+        {% endfor %}
+        <div class="today__watch__past">
+          {% for card_obj in past_watch|reverse %}
+            {% if card_obj.post_type is same as('service') %}
+              {% include 'partial/cards/video.twig' with { card: card_obj, watch: true} %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</section>

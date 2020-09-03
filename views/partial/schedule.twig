@@ -1,0 +1,19 @@
+<section id="schedule" class="schedule">
+  <div class="schedule__backdrop"></div>
+  <div class="schedule__inner">
+    <div class="schedule__header">
+      <div class="schedule__header__title">
+        <p>HIGH HOLIDAYS SCHEDULE</p>
+      </div>
+      <div class="schedule__header__close">
+        {% include 'partial/svgs/close.twig' %}  
+      </div>
+    </div>
+    <div class="schedule__content schedule__content--main">
+      {% include 'partial/schedule_list.twig' %}
+      <div class="schedule__content__calendar">
+      {% include 'partial/calendar.twig' %}
+      </div>
+    </div>
+  </div>
+</section>

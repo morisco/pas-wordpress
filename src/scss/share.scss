@@ -1,0 +1,53 @@
+.share{
+  position:relative;
+  font-size:12px;
+  text-transform:uppercase;
+  padding:15px 0;
+  margin-right:15px;
+  display:flex;
+  justify-content:flex-end;
+  &__add{
+    display:inline-block;
+    transition:transform 0.25s ease-out 0.25s, opacity 0.25s linear 0.25s;
+    transform:translateX(0);
+    opacity:1;
+    &-arrow{
+      font-size:15px;
+    }
+  }
+  &__options{
+    position:absolute;
+    right:-20px;
+    top:50%;
+    opacity:0;
+    transform:translateY(-50%);
+    z-index:-1;
+    pointer-events:none;
+    transition:right 0.5s ease-out 0s, opacity 0.25s linear, z-index 0s linear 0.5s, visibility linear 0.5s;
+    text-align:right;
+    visibility:hidden;
+
+    a{
+      margin: 0 5px;
+      &:first-of-type{
+        margin-left:0;
+      }
+      color:$white;
+    }
+  }
+  &:hover{
+    .share__add{
+      transition:transform 0.5s ease-out 0s, opacity 0.25s linear;
+      transform:translateX(20px);
+      opacity:0;
+    }
+    .share__options{
+      opacity:1;
+      z-index:1;
+      right:0;
+      pointer-events:all;
+      visibility:visible;
+      transition:right 0.5s ease-out 0.325s, opacity 0.25s linear 0.325s, visibility 0s linear 0.125s;
+    }
+  }
+}

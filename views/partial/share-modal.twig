@@ -1,0 +1,18 @@
+<section id="share-modal" class="modal modal--share modal--display">
+  <div class="modal__backdrop"></div>
+  <div class="modal__content">
+     <div class="modal__close">
+        {% include 'partial/svgs/close.twig' %}  
+      </div>
+      {% if shared_post.post_type is same as('service') %}
+        {% include 'partial/cards/service.twig' with { card: shared_post} %}
+      {% elseif shared_post.post_type is same as ('video') %}
+        {% include 'partial/cards/video.twig' with { card: shared_post} %}
+      {% elseif shared_post.post_type is same as('class') %}
+        {% include 'partial/cards/class.twig' with { card: shared_post} %}
+      {% elseif shared_post.post_type is same as('article') %}
+        {% include 'partial/cards/article.twig' with { card: shared_post} %}
+      {% else %}
+      {% endif %}
+  </div>
+</section>

@@ -1,0 +1,75 @@
+h1,h2,h3,h4{
+  margin:0;
+}
+h3{
+  font-weight:300;
+  font-style:normal;
+  font-size:32px;
+  line-height:38px;
+  @include mobile{
+    font-size:28px;
+    line-height:33px;
+  }
+}
+h2{
+  font-family:'DomaineDisplay';
+  font-weight:bold;
+  font-style:italic;
+  font-size:64px;
+  line-height:1;
+  margin-top:10px;
+  
+  text-shadow: 0px 0px 5px $charcoal;
+  @include tablet-landscape{
+    font-size:50px;
+  }
+}
+
+p,
+.p{
+  font-size:15px;
+  line-height:22px;
+  font-weight:300;
+  margin:0;
+  &--small{
+    font-size:12px;
+  }
+  &--italic{
+    font-style:italic;
+  }
+}
+
+h4{
+  display:inline-block;
+  font-weight:500;
+  font-size:29px;
+  border-bottom:1px solid $white;
+  text-shadow: 0px 0px 5px $charcoal;
+  letter-spacing:3px;
+  color:$white;
+  padding-bottom:5px;
+  text-transform:uppercase;
+  @include tablet-landscape{
+    font-size:24px;
+  }
+}
+h5{
+  font-size:25px;
+  letter-spacing:0.04em;
+  line-height:30px;
+  font-weight:500;
+}
+
+h6{
+  font-size:20px;
+  line-height:21px;
+  font-weight:500;
+}
+
+.hebrew{
+  font-family: "Ping HL"; 
+  font-weight:800;
+  font-size:41px;
+  line-height:1;
+  margin-top:15px;
+}

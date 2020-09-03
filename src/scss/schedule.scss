@@ -1,0 +1,349 @@
+.schedule{
+  position:fixed;
+  left:100%;
+  width:100vw;
+  top:0;
+  bottom:0;
+  z-index:-1;
+  visibility:hidden;
+  transition:all 0s linear 1s;;
+  &__backdrop{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:$white;
+    opacity:0;
+    transition:opacity 0.25s linear 0.5s;
+  }
+  &__inner{
+    width:100%;
+    max-width:1050px;
+    position:absolute;
+    right:-100%;
+    top:0;
+    bottom:0;
+    transition:right 0.5s ease-out 0.25s;
+    background:$cream;
+    display:flex;
+    flex-direction:column;
+  }
+  &--display{
+    visibility:visible;
+    z-index:10;
+    left:0;
+    transition:all 0s linear;
+    .schedule__backdrop{
+      opacity:0.5;
+      transition:opacity 0.25s linear;
+    }
+    .schedule__inner{
+      right:0;
+    }
+  }
+  &__header{
+    height:90px;
+    width:100%;
+    display:flex;
+    border-bottom:2px solid $gold;
+    align-items:flex-end;
+    padding-bottom:30px;
+    flex: 0 0 auto;
+    position:relative;
+    z-index:3;
+    &__title{
+      flex:1;
+      text-transform:uppercase;
+      text-align:center;
+      p{
+        font-weight:normal;
+        color:$gold;
+      }
+    }
+    &__switcher{
+      width:100%;
+      padding:15px 0;
+      margin-top:-30px;
+      margin-bottom:30px;
+      left:0;
+      display:flex;
+      justify-content:flex-start;
+      background: linear-gradient(0deg, rgba(243,237,225,0) 0%, rgba(243,237,225,1) 100%);
+
+      &__button{
+        flex:1 1 auto;
+        max-width:calc(33.3333% - 10px);
+
+        text-transform:uppercase;
+        color:$gold;
+        text-align:center;
+        border:1px solid $gold;
+        height:40px;
+        background-color:$cream;
+        transition:all 0.25s linear;
+        padding-top:2px;
+        letter-spacing:0.07em;
+        font-size:12px;
+        cursor:pointer;
+        &:first-of-type{
+          margin-right:15px;
+        }
+        &:last-of-type{
+          margin-left:15px;
+        }
+        &:focus{
+          border:1px solid $gold;
+
+        }
+        &--active{
+          background-color:$gold;
+          color:$white;
+        }
+      }
+    }
+    &__close{
+      width:340px;
+      flex: 0 0 auto;
+      display:flex;
+      padding-right:35px;
+      justify-content:flex-end;
+      align-items:flex-end;
+      svg{
+        width:25px;
+        cursor:pointer;
+
+      }
+    }
+  }
+ 
+  &__version{
+
+    &--family,
+    &--kids{
+      display:none;
+    }
+    &__schedule{
+      &--past{
+        position:relative;
+        margin-top:60px;
+        padding-top:60px;
+        @include tablet-portrait{
+          padding-top:15px;
+        }
+        &:before{
+          content:'';
+          display:block;
+          position:absolute;
+          top:0;
+          left:60px;
+          right:60px;
+          height:1px;
+          background:$gold;
+          opacity:0.5;
+          @include tablet-portrait{
+            left:0;
+            right:0;
+          }
+        }
+          h5{
+            color:$gold;
+            text-align:center;
+          }
+          .schedule__holiday{
+            opacity:0.5;
+          }
+
+      }
+    }
+  }
+  &__content{
+    display:flex;
+    flex:1;
+    height:calc(100% - 90px);
+  
+    &__details{
+      position:relative;
+      flex:1;
+      overflow:hidden;
+      height:100%;
+      overflow-y:auto;
+      padding-top:100px;
+      border-right:1px solid $gold;
+      
+    }
+    &__calendar{
+      width:340px;
+      flex: 0 0 auto;
+      padding-top:35px; 
+      overflow-y:auto;
+      padding-left:55px;
+
+    }
+  }
+  &__empty{
+    max-width:500px;
+    text-align:center;
+  }
+  &__day{
+    &__type{
+      &--main{
+        display:block;
+        max-height:100%;
+        overflow:hidden;
+
+      }
+      &--family,
+      &--young{
+        max-height:0;
+        overflow:hidden;
+      }
+    }
+  }
+  &__holiday{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:$gold;
+    margin-bottom:30px;
+    
+    &:after{
+      content:'';
+      display:none;
+      height:1px;
+      background:$gold;
+      width:80%;
+      max-width:600px;
+    }
+    &:before{
+      content:'';
+      display:block;
+      width:18px;
+      height:18px;
+      margin-bottom:10px;
+    }
+  
+    &__title{
+      font-size:30px;
+      line-height:36px;
+      text-shadow:none;
+
+      color:$gold;
+
+    }
+   
+    &__day{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      width:100%;
+      padding: 0 60px;
+     
+      @include tablet-portrait{
+        padding:0;
+      }
+      &__heading{
+        margin:30px 0;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        line-height:1;
+        border-top:1px solid $gold;
+        border-bottom:1px solid $gold;
+        padding:7.5px 0;
+        width:100%;
+        strong{
+          font-weight:700;
+          margin-bottom:3px;
+        }
+      }
+    }
+    &__timeframe__heading{
+      text-align:center;
+      font-style:italic;
+      margin:40px;
+    }
+    &__event{
+      display:flex;
+      justify-content:center;
+      margin-bottom:15px;
+      &__breakouts{
+        margin-left:-105px;
+        margin-top:5px;
+        @include tablet-portrait{
+          margin-left:-100px;
+        }
+        .schedule__holiday__event__inner{
+          width:300px;
+          .schedule__holiday__event__time{
+            font-size:12px;
+            width:80px;
+            text-align:left;
+          }
+          h6{
+            font-size:12px;
+          }
+          a{
+            display:block;
+            font-size:12px;
+            color:$gold;
+            margin-top:-5px;
+            margin-bottom:2px;
+          }
+        }
+      }
+      &__details{
+        width:100%;
+      }
+      &__inner{
+        display:flex;
+        align-items:flex-start;
+        width:480px;
+        max-width:90%;
+        
+      }
+      &__details{
+        width:100%;
+      }
+      &__time{
+        width:190px;
+        text-align:right;
+        flex: 0 0 auto;
+        margin-right:25px;
+        @include mobile{
+          width:140px;
+          margin-right:20px;
+        }
+      }
+      &__details{
+        flex:1;
+        .p--small{
+          margin:5px 0;
+        }
+      }
+    }
+    &--rosh{
+      &:before{
+        background:$purple;
+      }
+    }
+    &--elul{
+      &:before{
+        background:$green;
+      }
+    }
+    &--yomkippur{
+      &:before{
+        background:$blue;
+      }
+    }
+  }
+
+}
+
+.full-calendar{
+  display:inline-block;
+  color:$gold;
+  text-decoration:underline;
+}

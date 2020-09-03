@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__menu">
+      <div class="footer__menu__column">
+        <span>Park Avenue<br/>Synagogue<br/>High Holidays 5781</span>
+        <div class="footer__menu__mobile-only">
+          <div>Contact Info:</div>
+          <a href="mailto:office@pasyn.org">office@pasyn.org</a>
+          <a href="tel:212-369-2600">212-369-2600</a>
+        </div>
+      </div>
+      <div class="footer__menu__column">
+        <a href="#" id="footer-menu-help">Help</a>
+        <a href="https://pasyn.org/about">About</a>
+        <a href="https://pasyn.org/worship">Worship</a>
+        <a href="https://pasyn.org/learning">Learning</a>
+        <a href="https://pasyn.org/calendar">Calendar</a>
+        <a href="https://pasyn.org/communities">Communities</a>
+        <a href="https://pasyn.org/news-and-resources">Resources</a>
+      </div>
+      <div class="footer__menu__column">
+        <div>Contact Info:</div>
+        <a href="mailto:office@pasyn.org">office@pasyn.org</a>
+        <a href="tel:212-369-2600">212-369-2600</a>
+      </div>
+    </div>
+    {% if not hideHelp %}
+    <div class="footer__help" id="footer-show-help">
+      <h5>help with getting connected</h5>
+      <button class="arrow-button">→ all your questions answered</button>
+    </div>
+    {% endif %}
+    <div class="footer__copyright">&copy; Copyright 2020</div>
+  </div>
+</footer>

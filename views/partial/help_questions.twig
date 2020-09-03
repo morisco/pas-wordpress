@@ -1,0 +1,21 @@
+<div class="modal__content__questions">
+  <div class="modal__content__questions__inner">
+    {% for faq in faqs %}
+      <div class="modal__content__question">
+        <h5>{{faq.question}}</h5>
+        <p class="excerpt">{{faq.excerpt}}</p>
+        <div class="modal__content__question__expanded">
+          <button class="modal__content__question__close">
+            Back
+          </button>
+          <h5>{{faq.question}}</h5>
+          <div class="modal__content__question__expanded__answer">
+          {{faq.answer | raw}}
+          </div>
+        </div>
+        <a href="#"class="question-learn-more">→ learn more</a>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="modal__content__overlay"></div>
+</div>

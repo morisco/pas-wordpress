@@ -1,0 +1,36 @@
+<nav class="mobile-nav">
+  <button class="mobile-nav__close">
+    {% include 'partial/svgs/close.twig' %}
+  </button>
+  <div class="mobile-nav__logo">
+    <img src="{{site.theme.link}}/dist/images/logo.jpg" alt="Park Avenue Synagogue Logo" />
+  </div>
+  <div class="mobile-nav__options">
+    <button class="mobile-nav__accordion-trigger" id="schedule-trigger">
+      <span>ELUL and high holiday<br/>schedule</span>
+      <div class="mobile-nav__accordion-mover">
+        <span>ELUL and high holiday<br/>schedule</span>
+        {% include 'partial/svgs/down_caret.twig' %}
+      </div>
+    </button>
+    <div class="mobile-nav__accordion-content" id="schedule-content">
+      {% include 'partial/schedule_list.twig' %}
+    </div>
+    <a href="#watch">watch <br/> high holiday <br/> services</a>
+    <button class="mobile-nav__accordion-trigger" id="help-trigger">
+      <span>help with getting <br/> connected</span>
+      <div class="mobile-nav__accordion-mover">
+        <span>help with getting <br/> connected</span>
+        {% include 'partial/svgs/down_caret.twig' %}
+      </div>
+    </button>
+    <div class="mobile-nav__accordion-content" id="help-content">
+      {% include 'partial/help_questions.twig' %}
+    </div>
+    <a href="#">go to <br/> high holiday <br/> main page</a>
+    <div class="mobile-nav__donate-wrapper">
+      <a href="{{header_links.donate_link}}" class="box-button" target="_blank"><span>Donate</span></a>
+    </div>
+  </div>
+  {% include 'footer.twig'  with {'hideHelp': true} %}
+</nav>

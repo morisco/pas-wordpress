@@ -1,0 +1,19 @@
+@mixin below-desktop {
+  @media (max-width:1023px) { @content; }
+}
+
+@mixin tablet-landscape {
+  @media (max-width: 1100px) { @content; }
+}
+
+@mixin tablet-portrait {
+  @media (max-width: 1023px) { @content; }
+}
+
+@mixin tablet-portrait-only {
+  @media (max-width: 1023px) and (min-width:768px) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: 767px) { @content; }
+}

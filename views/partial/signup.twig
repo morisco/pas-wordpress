@@ -1,0 +1,17 @@
+<div id="signup-modal" class="modal modal--signup">
+  <div class="modal__backdrop modal--signup__backdrop"></div>
+  <div class="modal__content modal--signup__content">
+    <button class="modal__close">
+      {% include 'partial/svgs/close.twig' %}  
+    </button>
+    <div class="modal__content__title">
+      {{signup_data.signup_heading}}
+      <div class="modal__content__description">{{signup_data.signup_content|raw}}</div>
+    </div>
+    <form class="signup-form" autocomplete="off" novalidate>
+      <label><span>First Name</span><input type="text" name="first_name" id="signup-firstname" required /></label>
+      <label><span>Last Name</span><input type="text" name="last_name" id="signup-lastname" required /></label>
+      <label><span>Email Address</span><input type="email" name="email" id="signup-email" required /></label>
+      <button class="signup-form__submit" type="submit">Submit</button>
+    </div>
+</div>

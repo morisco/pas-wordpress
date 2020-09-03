@@ -1,0 +1,50 @@
+<div class="card card--video {{card.past ? 'card--past' : ''}}">
+  <div class="card__inner">
+    <div class="card__slug">
+      {% if watch %}
+        {{getCardTime(card.start_time, card.end_time, card.service_date)}}
+      
+      {% elseif card.upcoming %}
+        {{getCardTime(card.start_time, card.end_time, false)}}
+      {% else %}
+        Video
+      {% endif %}
+      <div class="card__mobile-share">
+        {% include 'partial/shared/share.twig' %}
+      </div>
+    </div>
+    <h3>{{card.service_title}}</h3>
+    {{card.content|raw}}
+    <div class="card__footer">
+    {% if getIsNow(card.start_time, card.end_time)%}
+        <a href="{{card.zoom_link}}" target="_blank">Watch Live&nbsp;<span class="footer__arrow">→</span> </a>
+      {% elseif card.upcoming %}
+        {% include 'partial/shared/add-to-calendar.twig' with { card: card } %}
+      {% else %}
+        On-Demand
+      {% endif %}
+    </div>
+  </div>
+  <div class="card__media">
+    <div class="card__share">
+      {% include 'partial/shared/share.twig' with { card: card } %}
+    </div>
+    <div class="card__media__video-player">
+      {% if getIsNow(card.start_time, card.end_time) or getIsPast(card.end_time) %}
+        {% if isVimeo(card.zoom_link) %}
+          <a href="{{card.zoom_link}}" class="service-vimeo-play" data-title="{{card.service_title}}" target="_blank">
+            <button>
+              <img src="{{site.theme.link}}/dist/images/play.svg" alt="play button" />
+            </button>
+          </a>
+        {% else %}
+          <a href="{{card.zoom_link}}" class="zoom-play" target="_blank">
+            <button>
+              <img src="{{site.theme.link}}/dist/images/play.svg" alt="play button" />
+            </button>
+          </a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>

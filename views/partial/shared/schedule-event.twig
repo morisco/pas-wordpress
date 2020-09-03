@@ -1,0 +1,34 @@
+ <article class="schedule__holiday__event">
+  <div class="schedule__holiday__event__inner">
+    <div class="schedule__holiday__event__time">
+      {{getCardTime(event.start_time, event.end_time, false)}}
+    </div>
+    <div class="schedule__holiday__event__details">
+      <h6>{{event.service_title}}</h6>
+      {% if event.description %}
+        <p class="p--small p--italic">
+          {{event.description}}
+        </p>
+      {% endif %}
+      {% include 'partial/shared/add-to-calendar.twig' with { card: event } %}
+      {% if event.breakouts %}
+      <div class="schedule__holiday__event__breakouts">
+
+      {% for breakout in event.breakouts %}
+        <div class="schedule__holiday__event__inner">
+          <div class="schedule__holiday__event__time">
+            {{getCardTime(breakout.breakout_start_time, breakout.breakout_end_time, false)}}
+          </div>
+          <div>
+            <h6>{{breakout.breakout_title}}</h6>
+            {% if breakout.breakout_call_to_action %}
+              <a href="{{breakout.breakout_call_to_action.url}}" target="{{breakout.breakout_call_to_action.target}}">{{breakout.breakout_call_to_action.title}} <span class="footer__arrow">→</span></a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</article>

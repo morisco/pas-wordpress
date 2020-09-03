@@ -1,0 +1,97 @@
+.header{
+  background:$white;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:2;
+  border-bottom:1px solid $gold;
+  &__inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:90px;
+    padding:0 20px 0 140px;
+    @include tablet-landscape{
+      padding:0 20px 0 40px;
+    }
+    @include tablet-portrait{
+      padding:15px 20px;
+      height:70px;
+    }
+    @include mobile{
+      padding:15px 10px;
+    }
+  }
+  &__mobile-trigger{
+    display:none;
+    @include tablet-portrait{
+      display:block;
+      align-self: flex-end;
+      color:$gold;
+      text-transform:uppercase;
+      font-size:13px;
+      letter-spacing:0.07em;
+    }
+  }
+  &__nav{
+    height:100%;
+    display:flex;
+    @include tablet-portrait {
+      display:none;
+    }
+    a{
+      width:190px;
+      border-left:1px solid $gold;
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:$gold;
+      transition:all 0.25s linear;
+      background-color:$white;
+      letter-spacing:1px;
+      &:hover, 
+      &.active{
+        outline:0;
+        background-color:$gold;
+        color:$white;
+      }
+      
+    }
+  }
+  &__donate-wrapper{
+    padding:0 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100%;
+    justify-content:center;
+    border-left:1px solid $gold;
+  }
+  &__logo{
+    vertical-align:bottom;
+    @include tablet-portrait {
+      width:180px;
+      margin-bottom:-10px;
+
+    }
+  }
+}
+
+a.box-button{
+  display:inline-flex;
+  align-items:center;
+  height:44px;
+  font-size:13px;
+  background:$gold;
+  padding: 0 16px;
+  border:0;
+  color:$white;
+  width:auto;
+  &:focus{
+    background:darken($gold, 5);
+    outline:0;
+  }
+}

@@ -1,0 +1,39 @@
+{% block html_head_container %}
+
+{% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+    {% include 'header.twig' %}
+    {% include 'partial/mobile_nav.twig' %}
+    {% block content %}
+      Sorry, no content
+    {% endblock %}
+    {% block modals %}
+      {% include 'partial/schedule.twig' with {'signup_data': signup_data} %}
+      {% include 'partial/help.twig' with {'help': help} %}
+      {% include 'partial/signup.twig' %}
+      {% include 'partial/vimeo.twig' %}
+
+      {% if shared_post %}
+        {% include 'partial/share-modal.twig' %}
+      {% endif %}
+    {% endblock %}
+
+
+
+		{% block footer %}
+      {% include 'footer.twig' %}
+      <script type="text/javascript">
+      window.site = "{{site.link}}";
+      </script>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+      <script src="{{ site.theme.link }}/dist/vendor/vendor.js"></script>
+      <script src="{{ site.theme.link }}/dist/js/all.js"></script>
+			{{ function('wp_footer') }}
+		{% endblock %}
+	</body>
+</html>

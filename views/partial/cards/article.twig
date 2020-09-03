@@ -1,0 +1,13 @@
+  <div class="card card--article">
+    <div class="card__inner">
+      <div class="card__slug">
+        Article
+        {% include 'partial/shared/share.twig' with { card: card } %}
+      </div>
+      <h3>{{card.title}}</h3>
+      {{card.content|raw}}
+      <div class="card__footer">
+          <a href="{{card.article_link.url}}" target="{{card.article_link.target}}"><span class="footer__arrow">→</span> {{card.article_link.title}}</a>
+      </div>
+    </div>
+  </div>

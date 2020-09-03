@@ -1,0 +1,26 @@
+<div class="schedule__content__details">
+  <div class="schedule__version schedule__version--main">
+    <div class="schedule__version__schedule">
+      {% for day in upcoming_calendar.elul %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'elul', day:day} %}
+      {% endfor %}
+      {% for day in upcoming_calendar.rosh %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'rosh', day:day} %}
+      {% endfor %}
+      {% for day in upcoming_calendar.yomkippur %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'yomkippur', day:day} %}
+      {% endfor %}
+    </div>
+    <div class="schedule__version__schedule--past">
+      {% for day in past_calendar.elul %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'elul', day:day} %}
+      {% endfor %}
+      {% for day in past_calendar.rosh %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'rosh', day:day} %}
+      {% endfor %}
+      {% for day in past_calendar.yomkippur %}
+        {% include 'partial/shared/standalone_schedule.twig' with {holiday: 'yomkippur', day:day} %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

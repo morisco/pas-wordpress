@@ -1,0 +1,15 @@
+<section id="help-modal" class="modal modal--help">
+  <div class="modal__backdrop"></div>
+  <div class="modal__content">
+    <div class="modal__close">
+      {% include 'partial/svgs/close.twig' %}  
+    </div>
+    <div class="modal__content__title">
+      <span>{{help_heading}}</span>
+      <button class="modal__close-expanded">
+        BACK
+      </button>
+    </div>
+    {% include 'partial/help_questions.twig' %}
+  </div>
+</section>

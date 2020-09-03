@@ -1,0 +1,30 @@
+{% if data.morning|length > 0  %}
+  <div class="schedule__holiday__timeframe">
+    {# <div class="schedule__holiday__timeframe__heading">
+      — Early Services —
+    </div> #}
+    {% for card in data.morning %}
+        {% include 'partial/shared/schedule-event.twig' with { event : card } %}
+    {% endfor %}
+  </div>
+{% endif %}
+{% if data.afternoon|length > 0  %}
+  <div class="schedule__holiday__timeframe">
+    {# <div class="schedule__holiday__timeframe__heading">
+      — Main Service —
+    </div> #}
+    {% for card in data.afternoon %}
+      {% include 'partial/shared/schedule-event.twig' with { event : card} %}
+    {% endfor %}
+  </div>
+{% endif %}
+{% if data.night|length > 0  %}
+  <div class="schedule__holiday__timeframe">
+    {# <div class="schedule__holiday__timeframe__heading">
+      — Evening Service —
+    </div> #}
+    {% for card in data.night %}
+      {% include 'partial/shared/schedule-event.twig' with { event : card} %}
+    {% endfor %}
+  </div>
+{% endif %}

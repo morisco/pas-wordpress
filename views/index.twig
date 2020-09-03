@@ -1,0 +1,5 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {% include 'partial/today.twig' with {'welcome_data': welcome_data, 'todays_cards': todays_cards, 'today_data': today_data} %}
+{% endblock %}

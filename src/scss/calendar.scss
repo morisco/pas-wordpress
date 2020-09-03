@@ -1,0 +1,110 @@
+.calendar{
+  display:flex;
+  flex-direction:column;
+  &__keys{
+    margin:20px 0 60px;
+    width:210px;
+    
+  }
+
+  &__key{
+    height:25px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    color:$charcoal;
+    margin-bottom:10px;
+    width:100%;
+    text-transform:uppercase;
+    font-size:12px;
+    &:before{
+      content:'';
+      display:inline-block;
+      margin-right:10px;
+      width:20px;
+      height:20px;
+    }
+    &--elul{
+      &:before{
+        background:$green;
+      }
+    }
+    &--rosh-hoshanah{
+      &:before{
+      background:$purple;
+      }
+    }
+    &--yom-kippur{
+      &:before{
+      background:$blue;
+      }
+    }
+  }
+
+  &__month{
+    display:flex;
+    flex-direction:column;
+    width:210px;
+    margin-bottom:20px;
+    &__title{
+      text-transform:uppercase;
+    }
+    &__title,
+    &__rows{
+      width:100%;
+      display:flex;
+      font-size:11px;
+      text-align:center;
+      justify-content: center;
+      margin-bottom:5px;
+    }
+
+    &__rows{
+      flex-direction:column;
+      border-top:1px solid $charcoal;
+    }
+
+    .week{
+      display:flex;
+      border-bottom:1px solid $charcoal;
+      border-right:1px solid $charcoal;
+      &--headings{
+        border-right:0;
+      }
+      .heading,
+      .day{
+        flex:1;
+        height:28px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        @extend .p--small;
+      }
+      .day{
+        border-left:1px solid $charcoal;
+        font-weight:300;
+        &--elul{
+          background:$green;
+          cursor:pointer;
+        }
+        &--rosh{
+          background:$purple;
+          cursor:pointer;
+          color:$white;
+        }
+        &--yom{
+          background:$blue;
+          cursor:pointer;
+          color:$white;
+        }
+      }
+      .heading{
+        height:12px;
+        font-size:8px !important;
+        line-height:9.6;
+      }
+    }
+  
+  }
+
+}

@@ -1,0 +1,17 @@
+<div class="card card--class {{card.past ? 'card--past' : ''}}">
+  <div class="card__inner">
+    <div class="card__slug">
+       {% if card.upcoming and card.start_time %}
+        {{getCardTime(card.start_time, card.end_time, false)}}
+      {% else %}
+        Class
+      {% endif %}
+      {% include 'partial/shared/share.twig'with {'card': card} %}
+    </div>
+    <h3>{{card.service_title}}</h3>
+    {{card.content|raw}}
+    <div class="card__footer">
+      <a href="{{card.article_link.url}}" target="{{card.article_link.target}}"><span class="footer__arrow">→</span> {{card.article_link.title}}</a>
+    </div>
+  </div>
+</div>

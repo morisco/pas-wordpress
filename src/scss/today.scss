@@ -1,0 +1,150 @@
+.today{
+  position:relative;
+  min-height:calc(100vh - 90px);
+  width:100%;
+  max-width:100vw;
+  overflow:hidden;
+  z-index:0;
+  opacity:0;
+  transition:opacity 0.5s linear;
+  &--show{
+    opacity:1;
+  }
+  &__watch{
+    display:none;
+    @include tablet-portrait{
+      margin-top:20px;
+    }
+  }
+  &__background{
+    top:90px;
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:calc(100vh - 90px);
+    z-index:0;
+    img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-fit:left;
+      &.desktop-bg{
+        display:block;
+      }
+      &.mobile-bg{
+        display:none;
+      }
+      @include below-desktop{
+        &.mobile-bg{
+          display:block;
+        }
+        &.desktop-bg{
+          display:none;
+        }
+      }
+    }
+    @include tablet-portrait{
+      top:70px;
+      height:calc(100vh - 70px);
+      img{
+        object-position: left top;
+      }
+    }
+    @include mobile{
+      position:absolute;
+      height:auto;
+      top:0;
+      height:70vh;
+      img{
+        object-position:left;
+      }
+    }
+  }
+ 
+  &__inner{
+    position:relative;
+    width:calc(100% - 80px);
+    // max-width:1260px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    z-index:1;
+    @include tablet-portrait{
+      width:calc(100% - 40px);
+    }
+    @include mobile{
+      display:block;
+      width:100%;
+
+
+    }
+  }
+  &__day{
+    // width:335px
+    position:fixed;
+    left:0;
+    // right:calc(50% + 300px);
+    bottom:0;
+    height:calc(100vh - 90px);
+    width:calc(100% - 965px);
+    max-width:40%;
+    padding-top:125px;
+    display:flex;
+    justify-content:center;
+    color:$white;
+    text-align:center;
+    min-width:300px;
+    &__holiday__day{
+      border-bottom:0;
+      margin-top:10px;
+    }
+    &__watch{
+      display:none;
+      h4{
+        border-bottom:0;
+      }
+      &__past{
+        opacity:0.5;
+      }
+      
+    }
+    @include tablet-portrait{
+      min-width:250px;
+      top:50px;
+      padding-top:65px;
+    }
+    @include mobile{
+      position:relative;
+      top:auto;
+      left:auto;
+      bottom:auto;
+      right:auto;
+      width:100%;
+      height:100%;
+      padding-top:0;
+      height:70vh;
+      align-items:center;
+      max-width:100%;
+    }
+  }
+  &__cards{
+    width:925px;
+    float:right;
+    min-height:100vh;
+    min-width:60%;
+    align-self:flex-end;
+    padding-top:40px;
+    max-width:calc(100vw - 340px);
+    @include tablet-portrait{
+      max-width:calc(100vw - 270px);
+      padding-top:20px;
+    }
+    @include mobile{
+      max-width:100%;
+      float:none;
+      align-self:flex-start;
+      padding-top:0;
+    }
+  }
+}

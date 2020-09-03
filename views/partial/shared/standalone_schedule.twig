@@ -1,0 +1,78 @@
+{% set dayString = '2020'~day %}
+{% set dayData = day_schedules[dayString] %}
+{% set familyData = family_schedules[dayString] %}
+{% set youngData = young_schedules[dayString] %}
+
+<div class="schedule__holiday schedule__holiday--{{holiday}} " data-date="{{dayString}}">
+
+    <h2 class="schedule__holiday__title">
+      {% if holiday is same as('rosh') %}
+      {% if day is same as('0918') %}
+        Erev Rosh Hashanah
+      {% else %}
+        Rosh Hashanah  
+      {% endif %}
+      {% elseif holiday is same as('yomkippur') %}
+      {% if day is same as('0927') %}
+        Kol Nidre
+      {% else %}
+        Yom Kippur
+      {% endif %}
+      {% else %}
+      Elul
+      {% endif %}
+    </h2>
+    {% if holiday is same as('rosh') %}
+          <strong>
+          {% if day is same as('0918') %}
+          {% elseif day is same as('0919') %}
+            DAY 1
+          {% else %}
+            DAY 2
+          {% endif %}
+          </strong>
+        {% endif %}
+    <div class="schedule__holiday__day {{dayData ? '' : 'schedule__holiday__day--empty'}}">
+      <div class="schedule__holiday__day__heading">
+        
+        <span>{{getDate(day)}}</span>
+      </div>
+      
+      {% if holiday is same as('rosh') or holiday is same as('yomkippur') %}
+        {% if not day is same as('0918') and not day is same as('0927') %}
+        <div class="schedule__header__switcher">
+          <button class="schedule__header__switcher__button schedule__header__switcher__button--main schedule__header__switcher__button--active">
+          Main<br/> Services
+          </button>
+          <button class="schedule__header__switcher__button schedule__header__switcher__button--family">
+          Family<br/> Services
+          </button>
+          <button class="schedule__header__switcher__button schedule__header__switcher__button--kids">
+          Young<br/> Family Services
+          </button>
+        </div>
+        {% endif %}
+      {% endif %}
+      {% if dayData %}
+        <div class="schedule__day__type__wrapper">
+          <div class="schedule__day__type--main">
+            {% include 'partial/schedule_day.twig' with { data: dayData} %}
+          </div>
+          {% if holiday is same as('rosh') or holiday is same as('yomkippur') %}
+            {% if not day is same as('0918') and not day is same as('0927') %}
+              <div class="schedule__day__type--family">
+                {% include 'partial/schedule_day.twig' with { data: familyData} %}
+              </div>
+              <div class="schedule__day__type--young">
+                {% include 'partial/schedule_day.twig' with { data: youngData} %}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% else %}
+      <div class="schedule__empty">
+        There are no scheduled events for this day of Elul, check <a href="https://pasyn.org/calendar" class="full-calendar" target="_blank">here</a> for Park Avenue Synagogue's full calendar.
+        </div>
+      {% endif %}
+    </div>
+  </div>
