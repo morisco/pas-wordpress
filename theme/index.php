@@ -41,8 +41,10 @@ if(isset($_GET['share'])){
 $options = get_fields('options');
 $evergreen_content = $options['evergreen_cards'];
 foreach($evergreen_content as $cardobj){
-  $card = array('card'=> new Timber\Post($cardobj['card']->ID)); 
-  $cards[] = $card;
+  if($cardobj && $cardobj['card']){
+    $card = array('card'=> new Timber\Post($cardobj['card']->ID)); 
+    $cards[] = $card;
+  }
 };
 $evergreen_content = $cards;
 $context['faqs'] = $options['faqs'];
@@ -87,7 +89,7 @@ if($month === 8){
 $context['today_data'] = $today_data;
 $args = array(
   'numberposts' => 1,
-  'post_status'     => 'publish',
+  // 'post_status'     =>  'publish',
   'post_type' => 'daily',
   'meta_key' => 'day',
   'meta_value' => $date
@@ -161,11 +163,15 @@ $context['past_calendar'] = array(
 $args = array(
   'numberposts' => -1,
   'post_type' => 'daily',
-  'orderby' => 'day',
+  'meta_key'			=> 'day',
+  'orderby'			=> 'meta_value',
   'order' => 'ASC',
   'post_status'     => 'publish',
 );
 $days = Timber::get_posts($args);
+
+// var_dump($days);
+// die();
 
 
 function cmp($a, $b) {
@@ -252,21 +258,45 @@ $context['young_schedules'] = $youngSchedules;
 $watch_args = array(
   'numberposts' => -1,
   'post_type' => 'service',
-  'orderby' => 'day',
+  'meta_key'			=> 'service_date',
+  'orderby'			=> 'meta_value',
   'order' => 'ASC',
   'post_status'     => 'publish',
 );
 $watchCards = Timber::get_posts($watch_args);
+
 $context['watch_schedule'] = $watchCards;
 $today = date('md', strtotime($date));
 
 foreach($context['watch_schedule'] as $card){
   $intDate = intval($card->service_date);
   $intToday = intval('2020' . $today);
+  $breakouts = array();
+  foreach($card->get_field('breakouts') as $breakout){
+    $start_time = date('H:i:s', (strtotime($breakout['breakout_start_time']) - 14400));
+    $breakout['breakout_start_time'] = $start_time;
+    if($breakout['breakout_end_time']){
+      $end_time = date('H:i:s', (strtotime($breakout['breakout_end_time']) - 14400));
+      $breakout['breakout_end_time'] = $end_time;
+    } else {
+      $breakout['breakout_end_time'] = 0;
+    }
+    $breakouts[] = $breakout;
+  }
+  // var_dump($breakouts);
+  // die();
+  $card->formatted_breakouts = $breakouts;
+  // die();
+  if(!$card->end_time){
+
+    $end_stub = explode(':', $card->start_time);
+    $end_stub[0] = intval($end_stub[0])+ 2;
+    $card->end_time = implode(':', $end_stub);
+  }
   if($intDate < $intToday){
     $card->past = true;
     $context['past_watch'][] = $card;
-  } else {
+  } else if($intDate === $intToday) {
     $noramlizedEnd = $card->end_time ? intval(str_replace(':', '', $card->end_time)) : false;
     if($noramlizedEnd && $noramlizedEnd < $time){
       $card->past = true;
@@ -275,8 +305,10 @@ foreach($context['watch_schedule'] as $card){
       $card->upcoming = true;
       $context['upcoming_watch'][] = $card;
     }
+  } else {
+    $card->upcoming = true;
+    $context['upcoming_watch'][] = $card;
   }
-
 }
 
 foreach($context['calendar'] as $key => $dates){

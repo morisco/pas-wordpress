@@ -65,13 +65,13 @@
       <div class="today__watch">
         {% for card_obj in upcoming_watch %}
           {% if card_obj.post_type is same as('service') %}
-            {% include 'partial/cards/video.twig' with { card: card_obj, watch: true} %}
+            {% include 'partial/cards/watch.twig' with { card: card_obj, watch: true} %}
           {% endif %}
         {% endfor %}
         <div class="today__watch__past">
           {% for card_obj in past_watch|reverse %}
             {% if card_obj.post_type is same as('service') %}
-              {% include 'partial/cards/video.twig' with { card: card_obj, watch: true} %}
+              {% include 'partial/cards/watch.twig' with { card: card_obj, watch: true} %}
             {% endif %}
           {% endfor %}
         </div>

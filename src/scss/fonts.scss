@@ -1,17 +1,8 @@
 
-/* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/3c07b0");
-
-
-
-
-
-
-
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -19,8 +10,8 @@
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -28,8 +19,8 @@
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -37,8 +28,8 @@
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -46,8 +37,8 @@
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -55,19 +46,10 @@
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium/font.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium/font.woff') format('woff');
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DomaineDisplay';
-  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/Domaine/DomaineDisplay-BoldItalic.woff2') format('woff2'),
-      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -80,3 +62,13 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'DomaineDisplay';
+  src: url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff2') format('woff2'),
+      url('https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+

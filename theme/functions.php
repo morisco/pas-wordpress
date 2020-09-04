@@ -219,6 +219,12 @@ class StarterSite extends Timber\Site {
 		return $text;
 	}
 
+
+  public function get_formatted_date($date){
+    $formattedDate =  date("l, F j", strtotime($date));
+    return $formattedDate;
+  }
+
   public function get_card_time($start_time, $end_time, $date) {
     $date_time_eastern = new DateTime($start_time, new DateTimeZone('America/New_York'));
 
@@ -226,7 +232,7 @@ class StarterSite extends Timber\Site {
     $normalizedEnd = intval(str_replace(':', '', $end_time));
     $start_ampm = $normalizedStart >= 120000 ? 'pm': 'am';
     $normalizedStart = $normalizedStart >= 130000 ? $normalizedStart - 120000 : $normalizedStart;
-    $end_ampm = $normalizedEnd >= 120000 ? 'pm': 'am';
+    $end_ampm = $normalizedEnd ? $normalizedEnd >= 120000 ? 'pm': 'am' : false;
     $normalizedEnd = $normalizedEnd >= 130000 ? $normalizedEnd - 120000 : $normalizedEnd;
     $time_string = $normalizedStart >= 100000 ? 
       substr($normalizedStart, 0, 2) . ':' . substr($normalizedStart, 2, 2) 
@@ -241,7 +247,8 @@ class StarterSite extends Timber\Site {
         substr($normalizedEnd, 0, 2) . ':' . substr($normalizedEnd, 2, 2) 
         : substr($normalizedEnd, 0, 1) . ':' . substr($normalizedEnd, 1, 2);
       $time_string .= $end_ampm;
-   
+    } else {
+      // $time_string .= $start_ampm;
     }
 
     if($date){
@@ -252,10 +259,17 @@ class StarterSite extends Timber\Site {
     }
   }
 
-  public function get_is_now($start_time, $end_time) {
+  public function get_is_now($start_time, $end_time, $service_date) {
     $isNow = false;
+
     $start_date = date('His', strtotime($start_time));
     $end_date = date('His', strtotime($end_time));
+
+    if(isset($_GET['today'])){
+      $now_today = $_GET['today'];
+    } else {
+      $now_today = date('Ymd');
+    }
 
     if(isset($_GET['time'])){
       $time = $_GET['time'];
@@ -263,15 +277,21 @@ class StarterSite extends Timber\Site {
     } else {
       $now_date = date('His');
     }
-
-    if($now_date > $start_date && $now_date < $end_date){
+    if($now_today === $service_date && $now_date > $start_date && $now_date < $end_date){
       $isNow = true;
     }
     return $isNow;
   }
   
-  public function get_is_past($end_time) {
+  public function get_is_past($end_time, $service_date) {
     $isPast = false;
+    if(isset($_GET['today'])){
+      $now_today = $_GET['today'];
+    } else {
+      $now_today = date('Ymd');
+    }
+
+
     $end_date = date('His', strtotime($end_time));
     if(isset($_GET['time'])){
       $time = $_GET['time'];
@@ -280,13 +300,17 @@ class StarterSite extends Timber\Site {
       $now_date = date('His');
     }
 
-    if($now_date > $end_date){
+    if($now_date > $end_date && $now_today === $service_date){
+      $isPast = true;
+    } else if($now_today > $service_date){
       $isPast = true;
     }
     return $isPast;
 
 
   }
+
+
 
 
   public function get_date($date) {
@@ -312,6 +336,35 @@ class StarterSite extends Timber\Site {
       return $card->post_title;
     }
   }
+
+  public function get_holiday_details($card) {
+    $details = array(
+      'holiday'=> '',
+      'day' => false
+    );
+    $now_today = $card->service_date;
+    switch($now_today){
+      case '20200918':
+        $details['holiday'] = 'Erev Rosh Hoshanah';
+      break;
+      case '20200919':
+        $details['holiday'] = 'Rosh Hoshanah';
+        $details['day'] = 'Day 1';
+      break;
+      case '20200920':
+        $details['holiday'] = 'Rosh Hoshanah';
+        $details['day'] = 'Day 2';
+      break;
+      case '20200927':
+        $details['holiday'] = 'Kol Nidrei';
+      break;
+      case '20200928':
+        $details['holiday'] = 'Yom Kippur';
+      break;
+    }
+
+    return $details;
+  }
   
   
 
@@ -328,12 +381,15 @@ class StarterSite extends Timber\Site {
 		$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
     $twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
     $twig->addFunction( new Timber\Twig_Function( 'getCardTime', array($this, 'get_card_time') ) );
+    $twig->addFunction( new Timber\Twig_Function( 'getHolidayDetails', array($this, 'get_holiday_details') ) );
+
     $twig->addFunction( new Timber\Twig_Function( 'getDate', array($this, 'get_date') ) );
     $twig->addFunction( new Timber\Twig_Function( 'getIsNow', array($this, 'get_is_now') ) );
     $twig->addFunction( new Timber\Twig_Function( 'getIsPast', array($this, 'get_is_past') ) );
     $twig->addFunction( new Timber\Twig_Function( 'getShareLink', array($this, 'get_share_link') ) );
     $twig->addFunction( new Timber\Twig_Function( 'isVimeo', array($this, 'is_vimeo') ) );
     $twig->addFunction( new Timber\Twig_Function( 'getShareTitle', array($this, 'get_share_title') ) );
+    $twig->addFunction( new Timber\Twig_Function( 'getFormattedDate', array($this, 'get_formatted_date') ) );
 		return $twig;
   }
   

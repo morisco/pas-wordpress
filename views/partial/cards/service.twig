@@ -7,16 +7,25 @@
       {% elseif card.upcoming %}
         {{getCardTime(card.start_time, card.end_time, false)}}
       {% else %}
-        Video
+        Service
       {% endif %}
       <div class="card__mobile-share">
         {% include 'partial/shared/share.twig' %}
       </div>
     </div>
     <h3>{{card.service_title}}</h3>
+    {% if watch %}
+      {% set breakouts = card.get_field('breakouts')%}
+      {% if breakouts %}
+    
+        {% for breakout in breakouts %}
+          {{breakout.breakout_title}}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
     {{card.content|raw}}
     <div class="card__footer">
-    {% if getIsNow(card.start_time, card.end_time)%}
+    {% if getIsNow(card.start_time, card.end_time, card.service_date)%}
         <a href="{{card.zoom_link}}" target="_blank">Watch Live&nbsp;<span class="footer__arrow">→</span> </a>
       {% elseif card.upcoming %}
         {% include 'partial/shared/add-to-calendar.twig' with { card: card } %}
@@ -30,7 +39,10 @@
       {% include 'partial/shared/share.twig' with { card: card } %}
     </div>
     <div class="card__media__video-player">
-      {% if getIsNow(card.start_time, card.end_time) or getIsPast(card.end_time) %}
+      <figure>
+        <img src="{{card.get_field('media_placeholder')}}" alt="Watch Service" />
+      </figure>
+      {% if getIsNow(card.start_time, card.end_time, card.service_date) or getIsPast(card.end_time, card.service_date) %}
         {% if isVimeo(card.zoom_link) %}
           <a href="{{card.zoom_link}}" class="service-vimeo-play" data-title="{{card.service_title}}" target="_blank">
             <button>

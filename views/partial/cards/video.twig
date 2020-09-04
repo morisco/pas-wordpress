@@ -18,6 +18,9 @@
       {% include 'partial/shared/share.twig' with { card: card } %}
     </div>
     <div class="card__media__video-player">
+      <figure>
+        <img src="{{card.get_field('media_placeholder')}}" alt="Watch Service" />
+      </figure>
       <a href="{{vimeo_link.url}}" target="{{vimeo_link.target}}">
         <button>
           <img src="{{site.theme.link}}/dist/images/play.svg" alt="play button" />

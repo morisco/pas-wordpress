@@ -1,4 +1,3 @@
-@import url("//hello.myfonts.net/count/3c07b0");
 .atc {
   position: relative;
   font-size: 12px;
@@ -126,17 +125,11 @@
 .card {
   margin-bottom: 12px;
   background: #f3ede1;
-  min-height: 470px;
-  display: flex; }
+  min-height: 470px; }
   @media (max-width: 767px) {
     .card {
       min-height: 0;
       margin-bottom: 20px; } }
-  .card__inner {
-    min-height: 470px; }
-    @media (max-width: 767px) {
-      .card__inner {
-        min-height: 0; } }
   .card--welcome {
     position: relative;
     padding: 80px 65px 60px;
@@ -215,6 +208,29 @@
       position: relative;
       background: #bec0c2;
       flex: 1; }
+      .card__media__video-player figure {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0; }
+        .card__media__video-player figure img {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          z-index: 0; }
+        .card__media__video-player figure:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: #9e843d;
+          z-index: 1;
+          mix-blend-mode: color; }
       .card__media__video-player a {
         position: absolute;
         top: 0;
@@ -252,7 +268,7 @@
           padding: 45px 25px 30px; } }
       .card--video .card__inner h3 {
         flex: 1;
-        max-width: 320px; }
+        max-width: 95; }
         @media (max-width: 1023px) {
           .card--video .card__inner h3 {
             margin-bottom: 20px; } }
@@ -276,7 +292,7 @@
           padding-top: 45px; } }
       .card--article .card__inner h3, .card--class .card__inner h3 {
         flex: 1;
-        max-width: 320px; }
+        max-width: 95%; }
         @media (max-width: 1023px) {
           .card--article .card__inner h3, .card--class .card__inner h3 {
             margin-bottom: 20px; } }
@@ -355,59 +371,131 @@
   .card--past .card__inner,
   .card--past .card__media {
     opacity: 0.5; }
+  .card--watch .card__inner {
+    padding: 0; }
+    .card--watch .card__inner__header {
+      width: 100%;
+      display: flex;
+      align-items: center; }
+      .card--watch .card__inner__header a.service-vimeo-play {
+        color: #79205d;
+        text-transform: uppercase; }
+        .card--watch .card__inner__header a.service-vimeo-play span {
+          color: #454545; }
+      .card--watch .card__inner__header .card__action {
+        flex: 1; }
+    .card--watch .card__inner .card__watch__inner {
+      padding: 30px 25px; }
+    .card--watch .card__inner .card__watch__main {
+      margin-top: 30px; }
+      .card--watch .card__inner .card__watch__main h3.card__watch__main__time {
+        font-size: 24px;
+        line-height: 28px;
+        text-transform: uppercase;
+        margin-bottom: 10px; }
+      .card--watch .card__inner .card__watch__main h3:not(.card__watch__main__time) {
+        font-weight: 500;
+        margin-bottom: 15px; }
+      .card--watch .card__inner .card__watch__main__breakouts .breakout {
+        border-top: 1px solid #454545;
+        padding: 10px 0;
+        display: flex; }
+        .card--watch .card__inner .card__watch__main__breakouts .breakout__time {
+          font-weight: 100;
+          font-size: 18px;
+          padding-right: 30px;
+          width: 140px;
+          flex: 0 0 auto;
+          text-transform: uppercase; }
+          @media (max-width: 767px) {
+            .card--watch .card__inner .card__watch__main__breakouts .breakout__time {
+              font-size: 15px;
+              width: 135px;
+              padding-right: 10px; } }
+        .card--watch .card__inner .card__watch__main__breakouts .breakout__content {
+          flex: 1;
+          padding-right: 10px; }
+        .card--watch .card__inner .card__watch__main__breakouts .breakout__title {
+          font-size: 20px;
+          line-height: 22px; }
+          @media (max-width: 767px) {
+            .card--watch .card__inner .card__watch__main__breakouts .breakout__title {
+              font-size: 18px;
+              line-height: 20px; } }
+        .card--watch .card__inner .card__watch__main__breakouts .breakout__cta {
+          font-size: 14px;
+          text-transform: uppercase; }
+          .card--watch .card__inner .card__watch__main__breakouts .breakout__cta a {
+            color: #454545; }
+    .card--watch .card__inner .card__holiday__details {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #454545;
+      text-transform: uppercase;
+      letter-spacing: 0.07em; }
+      .card--watch .card__inner .card__holiday__details strong {
+        display: block; }
+    .card--watch .card__inner .card__service-type {
+      background: #9e843d;
+      height: 45px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 0.07em; }
+      @media (max-width: 767px) {
+        .card--watch .card__inner .card__service-type {
+          height: 40px;
+          padding: 2px 12px 0; } }
+      .card--watch .card__inner .card__service-type--young {
+        font-size: 13px;
+        padding-right: 10px; }
 
 .arrow-button {
   text-transform: uppercase;
   color: #ffffff; }
 
-/* @import must be at top of file, otherwise CSS will not work */
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap; }
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap; }
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-LightItalic.woff") format("woff");
   font-weight: 300;
   font-style: italic;
   font-display: swap; }
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap; }
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Italic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
   font-display: swap; }
 
 @font-face {
   font-family: 'Galano Grotesque';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium/font.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium/font.woff") format("woff");
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/GalanoGrotesque-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
-  font-display: swap; }
-
-@font-face {
-  font-family: 'DomaineDisplay';
-  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/Domaine/DomaineDisplay-BoldItalic.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
   font-display: swap; }
 
 @font-face {
@@ -415,6 +503,13 @@
   src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/PingHL-Heavy.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/PingHL-Heavy.woff") format("woff");
   font-weight: 800;
   font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'DomaineDisplay';
+  src: url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff2") format("woff2"), url("https://spasuperlative.dreamhosters.com/wp-content/themes/pas/theme/dist/webfonts/DomaineDisplay-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
   font-display: swap; }
 
 .footer {
@@ -961,19 +1056,12 @@ button {
         text-align: center;
         flex-direction: column;
         color: #9e843d; }
-        .modal--signup__content .modal__content__title .modal__content__description {
+        .modal--signup__content .modal__content__title span {
           display: block;
           text-align: center;
           font-weight: 300;
           text-transform: none;
-          margin-top: 15px;
-          max-width: 100%; }
-          .modal--signup__content .modal__content__title .modal__content__description span {
-            display: block;
-            text-align: center;
-            font-weight: 300;
-            text-transform: none;
-            margin-top: 15px; }
+          margin-top: 15px; }
         @media (max-width: 767px) {
           .modal--signup__content .modal__content__title {
             padding: 30px;
@@ -1114,8 +1202,7 @@ button {
     .modal--help .modal__content__overlay--expanded {
       opacity: 1;
       z-index: 5555;
-      transition: z-index 0s linear, opacity 0.5s linear;
-      height: auto !important; }
+      transition: z-index 0s linear, opacity 0.5s linear; }
       .modal--help .modal__content__overlay--expanded > * {
         transition: opacity 0.5s linear 0s; }
   .modal--help .modal__content__question {
@@ -1162,6 +1249,10 @@ button {
 
 ::-webkit-scrollbar {
   display: none; }
+
+@media (max-width: 767px) {
+  .schedule__day__type__wrapper {
+    max-width: 100%; } }
 
 .schedule {
   position: fixed;
@@ -1226,10 +1317,10 @@ button {
       margin-bottom: 30px;
       left: 0;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       background: linear-gradient(0deg, rgba(243, 237, 225, 0) 0%, #f3ede1 100%); }
       .schedule__header__switcher__button {
-        flex: 1 1 auto;
+        flex: 1;
         max-width: calc(33.3333% - 10px);
         text-transform: uppercase;
         color: #9e843d;
@@ -1242,10 +1333,6 @@ button {
         letter-spacing: 0.07em;
         font-size: 12px;
         cursor: pointer; }
-        .schedule__header__switcher__button:first-of-type {
-          margin-right: 15px; }
-        .schedule__header__switcher__button:last-of-type {
-          margin-left: 15px; }
         .schedule__header__switcher__button:focus {
           border: 1px solid #9e843d; }
         .schedule__header__switcher__button--active {
@@ -1348,6 +1435,9 @@ button {
       align-items: center;
       width: 100%;
       padding: 0 60px; }
+      @media (max-width: 767px) {
+        .schedule__holiday__day {
+          align-items: flex-start; } }
       @media (max-width: 1023px) {
         .schedule__holiday__day {
           padding: 0; } }
@@ -1386,12 +1476,6 @@ button {
             text-align: left; }
           .schedule__holiday__event__breakouts .schedule__holiday__event__inner h6 {
             font-size: 12px; }
-          .schedule__holiday__event__breakouts .schedule__holiday__event__inner a {
-            display: block;
-            font-size: 12px;
-            color: #9e843d;
-            margin-top: -5px;
-            margin-bottom: 2px; }
       .schedule__holiday__event__details {
         width: 100%; }
       .schedule__holiday__event__inner {
@@ -1399,6 +1483,9 @@ button {
         align-items: flex-start;
         width: 480px;
         max-width: 90%; }
+        @media (max-width: 767px) {
+          .schedule__holiday__event__inner {
+            max-width: 100%; } }
       .schedule__holiday__event__details {
         width: 100%; }
       .schedule__holiday__event__time {
@@ -1408,10 +1495,14 @@ button {
         margin-right: 25px; }
         @media (max-width: 767px) {
           .schedule__holiday__event__time {
-            width: 140px;
+            width: 130px;
+            text-align: left;
             margin-right: 20px; } }
       .schedule__holiday__event__details {
         flex: 1; }
+        @media (max-width: 767px) {
+          .schedule__holiday__event__details {
+            max-width: calc(100% - 130px); } }
         .schedule__holiday__event__details .p--small, .schedule__holiday__event__details .calendar__month .week .heading, .calendar__month .week .schedule__holiday__event__details .heading,
         .schedule__holiday__event__details .calendar__month .week .day, .calendar__month .week .schedule__holiday__event__details .day {
           margin: 5px 0; }
@@ -1661,7 +1752,7 @@ h6 {
   font-weight: 500; }
 
 .hebrew {
-  font-family: "Ping HL";
+  font-family: 'Ping HL';
   font-weight: 800;
   font-size: 41px;
   line-height: 1;

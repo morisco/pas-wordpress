@@ -1,3 +1,8 @@
+.schedule__day__type__wrapper{
+  @include mobile{
+    max-width:100%;
+  }
+}
 .schedule{
   position:fixed;
   left:100%;
@@ -6,7 +11,8 @@
   bottom:0;
   z-index:-1;
   visibility:hidden;
-  transition:all 0s linear 1s;;
+  transition:all 0s linear 1s;
+ 
   &__backdrop{
     position:absolute;
     top:0;
@@ -68,11 +74,11 @@
       margin-bottom:30px;
       left:0;
       display:flex;
-      justify-content:flex-start;
+      justify-content:space-between;
       background: linear-gradient(0deg, rgba(243,237,225,0) 0%, rgba(243,237,225,1) 100%);
 
       &__button{
-        flex:1 1 auto;
+        flex:1;
         max-width:calc(33.3333% - 10px);
 
         text-transform:uppercase;
@@ -86,12 +92,6 @@
         letter-spacing:0.07em;
         font-size:12px;
         cursor:pointer;
-        &:first-of-type{
-          margin-right:15px;
-        }
-        &:last-of-type{
-          margin-left:15px;
-        }
         &:focus{
           border:1px solid $gold;
 
@@ -200,6 +200,7 @@
       }
     }
   }
+  
   &__holiday{
     position:relative;
     display:flex;
@@ -239,6 +240,10 @@
       align-items:center;
       width:100%;
       padding: 0 60px;
+      
+      @include mobile{
+        align-items:flex-start;
+      }
      
       @include tablet-portrait{
         padding:0;
@@ -284,13 +289,6 @@
           h6{
             font-size:12px;
           }
-          a{
-            display:block;
-            font-size:12px;
-            color:$gold;
-            margin-top:-5px;
-            margin-bottom:2px;
-          }
         }
       }
       &__details{
@@ -301,6 +299,9 @@
         align-items:flex-start;
         width:480px;
         max-width:90%;
+        @include mobile{
+          max-width:100%;
+        }
         
       }
       &__details{
@@ -312,12 +313,16 @@
         flex: 0 0 auto;
         margin-right:25px;
         @include mobile{
-          width:140px;
+          width:130px;
+          text-align:left;
           margin-right:20px;
         }
       }
       &__details{
         flex:1;
+        @include mobile{
+          max-width:calc(100% - 130px);
+        }
         .p--small{
           margin:5px 0;
         }

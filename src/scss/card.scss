@@ -2,18 +2,10 @@
   margin-bottom:12px;
   background:$cream;
   min-height:470px;
-  display: flex;
 
   @include mobile{
     min-height:0;
     margin-bottom:20px;
-  }
-  &__inner{
-    min-height:470px;
-    @include mobile{
-      min-height:0;
-
-    }
   }
   &--welcome{
     position:relative;
@@ -60,7 +52,6 @@
         }
       }
       p{
-        
         font-size:20px;
         line-height:30px;
         margin-top:40px;
@@ -103,6 +94,32 @@
       position:relative;
       background:#bec0c2;
       flex:1;
+      figure{
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+        img{
+          position:relative;
+          height:100%;
+          width:100%;
+          object-fit:cover;
+          z-index:0;
+        }
+        &:after{
+          content:'';
+          display:block;
+          position:absolute;
+          top:0;
+          right:0;
+          bottom:0;
+          left:0;
+          background:$gold;
+          z-index:1;
+          mix-blend-mode:color;
+        }
+      }
       a{
         position:absolute;
         top:0;
@@ -145,7 +162,7 @@
       }
       h3{
         flex:1;
-        max-width:320px;
+        max-width:95;
         @include tablet-portrait{
           margin-bottom:20px;
         }
@@ -175,7 +192,7 @@
       }
       h3{
         flex:1;
-        max-width:320px;
+        max-width:95%;
         @include tablet-portrait{
           margin-bottom:20px;
         }
@@ -274,6 +291,114 @@
     .card__inner,
     .card__media{
       opacity:0.5;
+    }
+  }
+  &--watch{
+    .card__inner{
+      padding:0;
+      &__header{
+        width:100%;
+        display:flex;
+        align-items:center;
+        a.service-vimeo-play{
+          color:$purple;
+          text-transform:uppercase;
+          span{
+            color:$charcoal;
+          }
+
+        }
+        .card__action{
+          flex:1;
+        }
+      }
+      .card__watch{
+
+        &__inner{
+          padding:30px 25px;
+        }
+        &__main{
+          margin-top:30px;
+          h3.card__watch__main__time{
+            font-size:24px;
+            line-height:28px;
+            text-transform:uppercase;
+            margin-bottom:10px;
+          }
+          h3:not(.card__watch__main__time){
+            font-weight:500;
+            margin-bottom:15px;
+          }
+          &__breakouts{
+            .breakout{
+              border-top:1px solid $charcoal;
+              padding:10px 0;
+              display:flex;
+              &__time{
+                font-weight:100;
+                font-size:18px;
+                padding-right:30px;
+                width:140px;
+                flex: 0 0 auto;
+                text-transform:uppercase;
+                @include mobile{
+                  font-size:15px;
+                  width:135px;  
+                  padding-right:10px;
+                }
+              }
+              &__content{
+                flex:1;
+                padding-right:10px;
+
+              }
+              &__title{
+                font-size:20px;
+                line-height:22px;
+                @include mobile{
+                  font-size:18px;
+                  line-height:20px;
+                }
+              }
+              &__cta{
+                font-size:14px;
+                text-transform:uppercase;
+                a{
+                  color:$charcoal;
+                }
+              }
+            }
+          }
+        }
+      }
+      .card__holiday__details{
+        padding-bottom:10px;
+        border-bottom:1px solid $charcoal;
+        text-transform:uppercase;
+        letter-spacing:0.07em;
+        strong{
+          display:block;
+        }
+      }
+      .card__service-type{
+        background:$gold;
+        height:45px;
+        padding:0 20px;
+        display:flex;
+        align-items:center;
+        margin-right:10px;
+        text-transform:uppercase;
+        color:$white;
+        letter-spacing:0.07em;
+        @include mobile{
+          height:40px;
+          padding:2px 12px 0;
+        }
+        &--young{
+          font-size:13px;
+          padding-right:10px;
+        }
+      }
     }
   }
 }
