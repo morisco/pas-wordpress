@@ -65,13 +65,15 @@ function PAS() {
     var vimeoTitle = $link.data('title');
     pas.$vimeoModal.find('h6').text(vimeoTitle);
     pas.$vimeoModal.addClass('modal--display');
-    pas.$vimeoModal.on('click', '.modal__backdrop, .modal__close', pas.closeVimeo)
+    pas.$vimeoModal.on('click', '.modal__backdrop, .modal__close', pas.closeVimeo);
     setTimeout(() => {
       var vimeoSettings = {
         url: vimeoURL,
         width: $('.modal--vimeo__content').width(),
         autoplay:true
       };
+      console.log(vimeoURL);
+      $('#vimeo-player').append('<iframe src="' + vimeoURL + '" scrolling="no" width="' + $('#vimeo-player').width() +'" height="' + $('#vimeo-player').outerHeight() +'"></iframe>')
   
       pas.vimeoInstance = new Vimeo.Player('vimeo-player', vimeoSettings);
     }, 10);
@@ -81,9 +83,10 @@ function PAS() {
   pas.closeVimeo = () => {
     pas.$vimeoModal.removeClass('modal--display');
     setTimeout(function() {
-      pas.vimeoInstance.destroy()
-      pas.$vimeoModal.off('click', '.modal__backdrop, .modal__close');
-    }, 1000);
+      $('#vimeo-player').empty();
+      // pas.vimeoInstance.destroy()
+      // pas.$vimeoModal.off('click', '.modal__backdrop, .modal__close');
+    }, 500);
 
   }
 
@@ -185,7 +188,7 @@ function PAS() {
         console.log(response);
       }
     });
-    // Cookies.set('PAS_2020_SIGNUP_SUCCESS', 'true');
+    Cookies.set('PAS_2020_SIGNUP_SUCCESS', 'true');
     pas.closeSignup();
   }
 

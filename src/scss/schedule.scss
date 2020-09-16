@@ -70,7 +70,7 @@
     &__switcher{
       width:100%;
       padding:15px 0;
-      margin-top:-30px;
+      margin-top:-15px;
       margin-bottom:30px;
       left:0;
       display:flex;
@@ -159,7 +159,7 @@
   }
   &__content{
     display:flex;
-    flex:1;
+    flex:0 0 auto;
     height:calc(100% - 90px);
   
     &__details{
@@ -168,7 +168,7 @@
       overflow:hidden;
       height:100%;
       overflow-y:auto;
-      padding-top:100px;
+      padding-top:60px;
       border-right:1px solid $gold;
       
     }
@@ -226,12 +226,14 @@
     }
   
     &__title{
-      font-size:30px;
-      line-height:36px;
+      margin-top:0;
+      font-size:23px;
+      line-height:26px;
       text-shadow:none;
-
       color:$gold;
-
+      font-family:'Galano Grotesque';
+      font-weight:600;
+      font-style:normal;
     }
    
     &__day{
@@ -257,7 +259,8 @@
         border-top:1px solid $gold;
         border-bottom:1px solid $gold;
         padding:7.5px 0;
-        width:100%;
+        width:calc(100% - 60px);
+        margin:0 auto 15px;
         strong{
           font-weight:700;
           margin-bottom:3px;
@@ -271,23 +274,47 @@
     }
     &__event{
       display:flex;
-      justify-content:center;
+      flex-direction:column;
+      align-content:center;
       margin-bottom:15px;
-      &__breakouts{
-        margin-left:-105px;
-        margin-top:5px;
-        @include tablet-portrait{
-          margin-left:-100px;
+      h6{
+        text-decoration:underline;
+        @include mobile{
+          font-size:18px;
         }
+      }
+      
+      .atc{
+        margin:-10px 0 -15px;
+      }
+      &__breakouts{
+        // margin-left:-105px;
+        margin-top:5px;
         .schedule__holiday__event__inner{
-          width:300px;
+          margin-top:5px;
+          margin-bottom:10px;
+          // align-items:center;
+          > div{
+            flex:1;
+            min-width:55%;
+            @include mobile{
+              min-width:60%;
+            }
+          }
           .schedule__holiday__event__time{
-            font-size:12px;
-            width:80px;
-            text-align:left;
+            font-size:14px;
+            min-width:0;
+            text-transform:lowercase;
           }
           h6{
+            font-size:15px;
+            line-height:17px;
+            text-decoration:none;
+          }
+          a{
             font-size:12px;
+            text-transform:uppercase;
+            color:$gold;
           }
         }
       }
@@ -298,9 +325,15 @@
         display:flex;
         align-items:flex-start;
         width:480px;
-        max-width:90%;
+        max-width:100%;
         @include mobile{
           max-width:100%;
+        }
+        >div{
+          min-width:55%;
+          @include mobile{
+            min-width:60%;
+          }
         }
         
       }
@@ -308,20 +341,23 @@
         width:100%;
       }
       &__time{
-        width:190px;
         text-align:right;
-        flex: 0 0 auto;
-        margin-right:25px;
+        flex: 1;
+        // margin-right:25px;
+        text-transform:uppercase;
+        min-width:0 !important;
+        padding-right:25px;
         @include mobile{
-          width:130px;
-          text-align:left;
-          margin-right:20px;
+          text-align:right;
+          font-size:14px;
+          line-height:16px;
+          // margin-right:20px;
         }
       }
       &__details{
         flex:1;
         @include mobile{
-          max-width:calc(100% - 130px);
+          max-width:calc(100% - 145px);
         }
         .p--small{
           margin:5px 0;

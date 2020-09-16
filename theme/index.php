@@ -170,10 +170,6 @@ $args = array(
 );
 $days = Timber::get_posts($args);
 
-// var_dump($days);
-// die();
-
-
 function cmp($a, $b) {
   $aTime = intval($a['start_time']);
   $bTime = intval($b['start_time']);
@@ -216,7 +212,6 @@ function getSorted($sched, $day){
               $breakouts[] = $breakout;
             }
             $schedCard->breakouts =  $breakouts;
-            // var_dump($schedCard);
           }
         $startTime = intval($schedCard->start_time);
         if($startTime < 12){
@@ -264,9 +259,21 @@ $watch_args = array(
   'post_status'     => 'publish',
 );
 $watchCards = Timber::get_posts($watch_args);
-
 $context['watch_schedule'] = $watchCards;
 $today = date('md', strtotime($date));
+
+function cmptime($a, $b) {
+  $aTime = strtotime($a->service_date . $a->start_time);
+  $bTime = strtotime($b->service_date . $b->start_time);
+  if($aTime === $bTime){
+    return 0;
+  } else {
+    return ($aTime < $bTime) ? -1 : 1;
+  }
+  
+}
+
+usort($context['watch_schedule'], 'cmptime');
 
 foreach($context['watch_schedule'] as $card){
   $intDate = intval($card->service_date);
@@ -283,10 +290,7 @@ foreach($context['watch_schedule'] as $card){
     }
     $breakouts[] = $breakout;
   }
-  // var_dump($breakouts);
-  // die();
   $card->formatted_breakouts = $breakouts;
-  // die();
   if(!$card->end_time){
 
     $end_stub = explode(':', $card->start_time);
@@ -310,6 +314,7 @@ foreach($context['watch_schedule'] as $card){
     $context['upcoming_watch'][] = $card;
   }
 }
+// die();
 
 foreach($context['calendar'] as $key => $dates){
   $holiday = $key;

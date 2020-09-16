@@ -9,9 +9,10 @@
   }
   &--welcome{
     position:relative;
-    padding:80px 65px 60px;
+    padding:80px 65px 80px;
     width:100%;
     background:$white;
+    min-height:0;
     @include tablet-portrait{
       padding:45px;
     }
@@ -76,8 +77,10 @@
     min-height:0;
     cursor:pointer;
     .arrow-button{
+      display:block;
       margin-top:15px;
       margin-bottom:0;
+      max-width:80%;
     }
   }
   &__media{
@@ -94,6 +97,7 @@
       position:relative;
       background:#bec0c2;
       flex:1;
+      max-height:400px;
       figure{
         position:absolute;
         top:0;
@@ -163,8 +167,8 @@
       h3{
         flex:1;
         max-width:95;
+        margin-bottom:20px;
         @include tablet-portrait{
-          margin-bottom:20px;
         }
       }
       p{
@@ -193,8 +197,8 @@
       h3{
         flex:1;
         max-width:95%;
+        margin-bottom:20px;
         @include tablet-portrait{
-          margin-bottom:20px;
         }
           
       }
@@ -294,8 +298,27 @@
     }
   }
   &--watch{
+    .watch-description{
+      margin-bottom:20px;
+      p{
+        width:100%;
+        max-width:100%;
+      }
+    }
     .card__inner{
       padding:0;
+      .atc{
+        margin:0;
+      }
+      .card__action{
+        margin-top:-20px;
+        a{
+          margin:30px 0 15px 0;
+          display:block;
+          text-transform:uppercase;
+          color:$purple;
+        }
+      }
       &__header{
         width:100%;
         display:flex;
@@ -308,20 +331,24 @@
           }
 
         }
-        .card__action{
-          flex:1;
-        }
+        
       }
       .card__watch{
-
         &__inner{
           padding:30px 25px;
+          @include mobile{
+            padding:20px;
+          }
         }
+        .card__action{
+          margin-bottom:20px;
+        }
+        
         &__main{
           margin-top:30px;
           h3.card__watch__main__time{
-            font-size:24px;
-            line-height:28px;
+            font-size:18px;
+            line-height:20px;
             text-transform:uppercase;
             margin-bottom:10px;
           }
@@ -336,11 +363,11 @@
               display:flex;
               &__time{
                 font-weight:100;
-                font-size:18px;
-                padding-right:30px;
+                font-size:16px;
+                padding-right:15px;
                 width:140px;
                 flex: 0 0 auto;
-                text-transform:uppercase;
+                text-transform:lowercase;
                 @include mobile{
                   font-size:15px;
                   width:135px;  
@@ -354,7 +381,7 @@
               }
               &__title{
                 font-size:20px;
-                line-height:22px;
+                line-height:24px;
                 @include mobile{
                   font-size:18px;
                   line-height:20px;

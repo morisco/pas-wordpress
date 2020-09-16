@@ -3,7 +3,7 @@
     {% for faq in faqs %}
       <div class="modal__content__question">
         <h5>{{faq.question}}</h5>
-        <p class="excerpt">{{faq.excerpt}}</p>
+        <div class="excerpt">{{faq.excerpt|raw}}</div>
         <div class="modal__content__question__expanded">
           <button class="modal__content__question__close">
             Back
@@ -13,7 +13,9 @@
           {{faq.answer | raw}}
           </div>
         </div>
-        <a href="#"class="question-learn-more">→ learn more</a>
+        {% if faq.answer %}
+          <a href="#"class="question-learn-more">→ learn more</a>
+        {% endif %}
       </div>
     {% endfor %}
   </div>

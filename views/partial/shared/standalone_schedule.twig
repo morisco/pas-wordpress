@@ -4,7 +4,7 @@
 {% set youngData = young_schedules[dayString] %}
 
 <div class="schedule__holiday schedule__holiday--{{holiday}} " data-date="{{dayString}}">
-
+  <div class="schedule__holiday__day__heading">
     <h2 class="schedule__holiday__title">
       {% if holiday is same as('rosh') %}
       {% if day is same as('0918') %}
@@ -14,29 +14,31 @@
       {% endif %}
       {% elseif holiday is same as('yomkippur') %}
       {% if day is same as('0927') %}
-        Kol Nidre
+        Kol Nidrei
       {% else %}
         Yom Kippur
       {% endif %}
       {% else %}
-      Elul
+      {% if day is same as('0912') %}
+        Selihot
+      {% else %}
+        Elul
+      {% endif %}
+      {% endif %}
+      {% if holiday is same as('rosh') %}
+        {% if day is same as('0918') %}
+        {% elseif day is same as('0919') %}
+          Day 1
+        {% else %}
+            Day 2
+        {% endif %}
       {% endif %}
     </h2>
-    {% if holiday is same as('rosh') %}
-          <strong>
-          {% if day is same as('0918') %}
-          {% elseif day is same as('0919') %}
-            DAY 1
-          {% else %}
-            DAY 2
-          {% endif %}
-          </strong>
-        {% endif %}
+      <span>{{getDate(day)}}</span>
+    </div>
+
     <div class="schedule__holiday__day {{dayData ? '' : 'schedule__holiday__day--empty'}}">
-      <div class="schedule__holiday__day__heading">
-        
-        <span>{{getDate(day)}}</span>
-      </div>
+      
       
       {% if holiday is same as('rosh') or holiday is same as('yomkippur') %}
         {% if not day is same as('0918') and not day is same as('0927') %}
@@ -45,7 +47,7 @@
           Main<br/> Services
           </button>
           <button class="schedule__header__switcher__button schedule__header__switcher__button--family">
-          Family<br/> Services
+          Family &amp; Youth<br/> Services
           </button>
           <button class="schedule__header__switcher__button schedule__header__switcher__button--kids">
           Young<br/> Family Services

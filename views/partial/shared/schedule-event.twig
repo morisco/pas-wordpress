@@ -1,35 +1,42 @@
  <article class="schedule__holiday__event">
   <div class="schedule__holiday__event__inner">
     <div class="schedule__holiday__event__time">
-      {{getCardTime(event.start_time, event.end_time, false)}}
+      {{getCardTime(event.start_time, event.end_time, false)|raw}}
     </div>
     <div class="schedule__holiday__event__details">
-      <h6>{{event.service_title}}</h6>
+      <h6>
+         {% if event.service_type is same as('family') %}
+            Family &amp; Youth Services
+          {% elseif event.service_type is same as('young') %}
+            Young Family Services
+          {% else %}
+            Main Service
+          {% endif %}
+      </h6>
       {% if event.description %}
         <p class="p--small p--italic">
           {{event.description}}
         </p>
       {% endif %}
       {% include 'partial/shared/add-to-calendar.twig' with { card: event } %}
-      {% if event.breakouts %}
-      <div class="schedule__holiday__event__breakouts">
-
+    </div>
+  </div>
+  {% if event.breakouts %}
+    <div class="schedule__holiday__event__breakouts">
       {% for breakout in event.breakouts %}
         <div class="schedule__holiday__event__inner">
           <div class="schedule__holiday__event__time">
-            {{getCardTime(breakout.breakout_start_time, breakout.breakout_end_time, false)}}
+            {{getCardTime(breakout.breakout_start_time, breakout.breakout_end_time, false)|raw}}
           </div>
           <div>
             <h6>{{breakout.breakout_title}}</h6>
             <p>{{breakout.breakout_description}}</p>
             {% if breakout.breakout_call_to_action %}
-              <a href="{{breakout.breakout_call_to_action.url}}" target="{{breakout.breakout_call_to_action.target}}">{{breakout.breakout_call_to_action.title}} <span class="footer__arrow">→</span></a>
+              <a class="breakout-link" href="{{breakout.breakout_call_to_action.url}}" target="{{breakout.breakout_call_to_action.target}}"><span class="footer__arrow">→</span> {{breakout.breakout_call_to_action.title}}</a>
             {% endif %}
           </div>
         </div>
       {% endfor %}
-      </div>
-      {% endif %}
     </div>
-  </div>
+  {% endif %}
 </article>

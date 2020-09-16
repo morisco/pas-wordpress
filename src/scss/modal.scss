@@ -133,6 +133,10 @@
           font-size:16px;
         }
       }
+      .modal__content__description{
+        font-size:16px;
+        font-weight:normal;
+      }
       .signup-form{
         position:relative;
         z-idnex:2;
@@ -198,7 +202,7 @@
   }
   &--vimeo{
     .modal__close{
-      top:20px;
+      top:10px;
       right:20px;
     }
     .modal__content{
@@ -313,6 +317,19 @@
         > * {
           transition: opacity 0.5s linear 0s;
         }
+        a{
+          color:$white;
+          text-decoration:underline;
+        }
+        ul,ol{
+          margin:20px auto;
+          max-width:500px;
+          list-style:square;
+        }
+        h5{
+          max-width:500px;
+          margin:0 auto 20px;
+        }
       }
     }
     .modal__content__question{
@@ -320,7 +337,7 @@
       flex: 0 0 auto;
       display:flex;
       flex-direction:column;
-      height:270px;
+      min-height:270px;
       padding:30px 30px 30px 60px;
       border-bottom:1px solid $cream;
       &__expanded{
@@ -346,12 +363,18 @@
       }
       p{
         color:$white;
-        flex:1;
+        // flex:1;
+        a{
+          color:$white;
+          text-decoration:underline;
+        }
       }
-      a{
+      > a{
         color:$white;
         font-size:10px;
         text-transform:uppercase;
+        margin-top:20px;
+        
       }
     }
     

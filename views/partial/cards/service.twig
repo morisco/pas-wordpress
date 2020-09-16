@@ -2,10 +2,10 @@
   <div class="card__inner">
     <div class="card__slug">
       {% if watch %}
-        {{getCardTime(card.start_time, card.end_time, card.service_date)}}
+        {{getCardTime(card.start_time, card.end_time, card.service_date)|raw}}
       
       {% elseif card.upcoming %}
-        {{getCardTime(card.start_time, card.end_time, false)}}
+        {{getCardTime(card.start_time, card.end_time, false)|raw}}
       {% else %}
         Service
       {% endif %}
@@ -26,7 +26,7 @@
     {{card.content|raw}}
     <div class="card__footer">
     {% if getIsNow(card.start_time, card.end_time, card.service_date)%}
-        <a href="{{card.zoom_link}}" target="_blank">Watch Live&nbsp;<span class="footer__arrow">→</span> </a>
+        <a href="{{card.vimeo_link}}" target="_blank">Watch Live&nbsp;<span class="footer__arrow">→</span> </a>
       {% elseif card.upcoming %}
         {% include 'partial/shared/add-to-calendar.twig' with { card: card } %}
       {% else %}
@@ -44,7 +44,7 @@
       </figure>
       {% if getIsNow(card.start_time, card.end_time, card.service_date) or getIsPast(card.end_time, card.service_date) %}
         {% if isVimeo(card.zoom_link) %}
-          <a href="{{card.zoom_link}}" class="service-vimeo-play" data-title="{{card.service_title}}" target="_blank">
+          <a href="{{card.vimeo_link}}" class="service-vimeo-play" data-title="{{card.service_title}}" target="_blank">
             <button>
               <img src="{{site.theme.link}}/dist/images/play.svg" alt="play button" />
             </button>

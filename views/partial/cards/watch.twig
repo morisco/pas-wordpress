@@ -1,26 +1,6 @@
 {% set holiday_details = getHolidayDetails(card) %}
 <div class="card card--video card--watch {{card.past ? 'card--past' : ''}}">
   <div class="card__inner">
-    <div class="card__inner__header">
-      <div class="card__service-type card__service-type--{{card.service_type}}">
-        {% if card.service_type is same as('family') %}
-          Family Service
-        {% elseif card.service_type is same as('young') %}
-          Young Family Service 
-        {% else %}
-          Main Service
-        {% endif %}
-      </div>
-      <div class="card__action">
-        {% if getIsNow(card.start_time, card.end_time, card.service_date) %}
-          <a href="{{card.vimeo_link}}" class="service-vimeo-play">
-            <span class="footer__arrow">→</span> Watch
-          </a>
-        {% elseif not card.past %}
-          {% include 'partial/shared/add-to-calendar.twig' with { card: card } %}
-        {% endif %}
-      </div>
-    </div>
     <div class="card__watch__inner">
       <div class="card__holiday__details">
         {% if holiday_details.holiday %}
@@ -29,17 +9,42 @@
         {{getFormattedDate(card.service_date)}}
       </div>
       <div class="card__watch__main">
-        <h3 class="card__watch__main__time">{{getCardTime(card.start_time, card.end_time, false)}}</h3>
-        <h3>{{card.service_title}}</h3>
-        <div class="card__watch__description">
-          {{card.content|raw}}
+        <h3 class="card__watch__main__time">{{getCardTime(card.start_time, card.end_time, false)|raw}}</h3>
+        <h3>
+          {% if card.service_type is same as('family') %}
+            Family &amp; Youth Services
+          {% elseif card.service_type is same as('young') %}
+            Young Family Services
+          {% else %}
+            Main Service
+          {% endif %}
+        </h3>
+        <div class="card__action">
+          {% if getIsNow(card.start_time, card.end_time, card.service_date) %}
+            {% if isVimeo(card.zoom_link) %}
+              <a href="{{card.zoom_link}}" target="_blank" class="service-vimeo-play">
+                <span class="footer__arrow">→</span> Watch Now
+              </a>
+            {% else %}
+              <a href="{{card.zoom_link}}" target="_blank">
+                <span class="footer__arrow">→</span> Watch Now
+              </a>
+            {% endif %}
+          {% elseif not card.past %}
+            {% include 'partial/shared/add-to-calendar.twig' with { card: card } %}
+          {% endif %}
         </div>
+        {% if card.content %}
+        <div class="watch-description">
+        {{card.content}}
+        </div>
+        {% endif %}
         {% set breakouts = card.formatted_breakouts%}
         {% if breakouts %}
           <div class="card__watch__main__breakouts">
             {% for breakout in breakouts %}
               <div class="breakout">
-                <div class="breakout__time">{{getCardTime(breakout.breakout_start_time, breakout.breakout_end_time,false)}}</div>
+                <div class="breakout__time">{{getCardTime(breakout.breakout_start_time, breakout.breakout_end_time,false)|raw}}</div>
                 <div class="breakout__content">
 
                   <div class="breakout__title">
@@ -52,7 +57,7 @@
                   {% endif %}
                    {% if breakout.breakout_call_to_action %}
                     <div class="breakout__cta">
-                      <a href="{{breakout.breakout_call_to_action.url}}" target="{{breakout.breakout_call_to_action.target}}">
+                      <a href="{{breakout.breakout_call_to_action.url}}" target="_blank">
                         <span class="footer__arrow">→</span>
                         {{breakout.breakout_call_to_action.title}}
                       </a>

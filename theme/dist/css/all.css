@@ -69,7 +69,7 @@
       height: 20px; }
     .calendar__key--elul:before {
       background: #96c3a4; }
-    .calendar__key--rosh-hoshanah:before {
+    .calendar__key--rosh-hashanah:before {
       background: #79205d; }
     .calendar__key--yom-kippur:before {
       background: #0281aa; }
@@ -132,9 +132,10 @@
       margin-bottom: 20px; } }
   .card--welcome {
     position: relative;
-    padding: 80px 65px 60px;
+    padding: 80px 65px 80px;
     width: 100%;
-    background: #ffffff; }
+    background: #ffffff;
+    min-height: 0; }
     @media (max-width: 1023px) {
       .card--welcome {
         padding: 45px; } }
@@ -193,8 +194,10 @@
     min-height: 0;
     cursor: pointer; }
     .card--help .arrow-button {
+      display: block;
       margin-top: 15px;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      max-width: 80%; }
   .card__media {
     display: flex;
     flex-direction: column;
@@ -207,7 +210,8 @@
     .card__media__video-player {
       position: relative;
       background: #bec0c2;
-      flex: 1; }
+      flex: 1;
+      max-height: 400px; }
       .card__media__video-player figure {
         position: absolute;
         top: 0;
@@ -268,10 +272,8 @@
           padding: 45px 25px 30px; } }
       .card--video .card__inner h3 {
         flex: 1;
-        max-width: 95; }
-        @media (max-width: 1023px) {
-          .card--video .card__inner h3 {
-            margin-bottom: 20px; } }
+        max-width: 95;
+        margin-bottom: 20px; }
       .card--video .card__inner p {
         max-width: 240px; }
         @media (max-width: 1023px) {
@@ -292,10 +294,8 @@
           padding-top: 45px; } }
       .card--article .card__inner h3, .card--class .card__inner h3 {
         flex: 1;
-        max-width: 95%; }
-        @media (max-width: 1023px) {
-          .card--article .card__inner h3, .card--class .card__inner h3 {
-            margin-bottom: 20px; } }
+        max-width: 95%;
+        margin-bottom: 20px; }
       .card--article .card__inner .card__footer, .card--class .card__inner .card__footer {
         padding-top: 0;
         border-top: 0; }
@@ -371,8 +371,22 @@
   .card--past .card__inner,
   .card--past .card__media {
     opacity: 0.5; }
+  .card--watch .watch-description {
+    margin-bottom: 20px; }
+    .card--watch .watch-description p {
+      width: 100%;
+      max-width: 100%; }
   .card--watch .card__inner {
     padding: 0; }
+    .card--watch .card__inner .atc {
+      margin: 0; }
+    .card--watch .card__inner .card__action {
+      margin-top: -20px; }
+      .card--watch .card__inner .card__action a {
+        margin: 30px 0 15px 0;
+        display: block;
+        text-transform: uppercase;
+        color: #79205d; }
     .card--watch .card__inner__header {
       width: 100%;
       display: flex;
@@ -382,15 +396,18 @@
         text-transform: uppercase; }
         .card--watch .card__inner__header a.service-vimeo-play span {
           color: #454545; }
-      .card--watch .card__inner__header .card__action {
-        flex: 1; }
     .card--watch .card__inner .card__watch__inner {
       padding: 30px 25px; }
+      @media (max-width: 767px) {
+        .card--watch .card__inner .card__watch__inner {
+          padding: 20px; } }
+    .card--watch .card__inner .card__watch .card__action {
+      margin-bottom: 20px; }
     .card--watch .card__inner .card__watch__main {
       margin-top: 30px; }
       .card--watch .card__inner .card__watch__main h3.card__watch__main__time {
-        font-size: 24px;
-        line-height: 28px;
+        font-size: 18px;
+        line-height: 20px;
         text-transform: uppercase;
         margin-bottom: 10px; }
       .card--watch .card__inner .card__watch__main h3:not(.card__watch__main__time) {
@@ -402,11 +419,11 @@
         display: flex; }
         .card--watch .card__inner .card__watch__main__breakouts .breakout__time {
           font-weight: 100;
-          font-size: 18px;
-          padding-right: 30px;
+          font-size: 16px;
+          padding-right: 15px;
           width: 140px;
           flex: 0 0 auto;
-          text-transform: uppercase; }
+          text-transform: lowercase; }
           @media (max-width: 767px) {
             .card--watch .card__inner .card__watch__main__breakouts .breakout__time {
               font-size: 15px;
@@ -417,7 +434,7 @@
           padding-right: 10px; }
         .card--watch .card__inner .card__watch__main__breakouts .breakout__title {
           font-size: 20px;
-          line-height: 22px; }
+          line-height: 24px; }
           @media (max-width: 767px) {
             .card--watch .card__inner .card__watch__main__breakouts .breakout__title {
               font-size: 18px;
@@ -763,13 +780,14 @@ button {
         align-items: center; }
         .mobile-nav__logo img {
           mix-blend-mode: multiply;
-          transform: translate3d(0, 0, 0); }
+          transform: translate3d(0, 0, 0);
+          height: 70%; }
       .mobile-nav__options {
         display: flex;
         flex-direction: column;
         width: 100%;
         border-top: 1px solid #9e843d; }
-        .mobile-nav__options a:not(.full-calendar):not(.box-button):not(.question-learn-more):not(.icon-yahoo):not(.icon-ical):not(.icon-google):not(.icon-outlook),
+        .mobile-nav__options a.big-button,
         .mobile-nav__options .mobile-nav__accordion-mover,
         .mobile-nav__options .mobile-nav__donate-wrapper,
         .mobile-nav__options .mobile-nav__accordion-trigger {
@@ -789,7 +807,7 @@ button {
           width: 100%;
           margin: 0 auto;
           transition: all 0.25s linear; }
-          .mobile-nav__options a:not(.full-calendar):not(.box-button):not(.question-learn-more):not(.icon-yahoo):not(.icon-ical):not(.icon-google):not(.icon-outlook).active,
+          .mobile-nav__options a.big-button.active,
           .mobile-nav__options .mobile-nav__accordion-mover.active,
           .mobile-nav__options .mobile-nav__donate-wrapper.active,
           .mobile-nav__options .mobile-nav__accordion-trigger.active {
@@ -890,7 +908,24 @@ button {
         border-bottom: 1px solid #f3ede1;
         height: auto; }
         .mobile-nav__accordion-content .modal__content__question > p {
-          opacity: 1; }
+          opacity: 1;
+          color: #ffffff; }
+        .mobile-nav__accordion-content .modal__content__question .excerpt p {
+          color: #ffffff; }
+          .mobile-nav__accordion-content .modal__content__question .excerpt p a {
+            color: #ffffff;
+            text-decoration: underline; }
+        .mobile-nav__accordion-content .modal__content__question .modal__content__question__expanded a {
+          color: #ffffff; }
+        .mobile-nav__accordion-content .modal__content__question .modal__content__question__expanded p {
+          color: #ffffff; }
+        .mobile-nav__accordion-content .modal__content__question .modal__content__question__expanded a {
+          color: #ffffff;
+          text-decoration: underline; }
+        .mobile-nav__accordion-content .modal__content__question .modal__content__question__expanded ul, .mobile-nav__accordion-content .modal__content__question .modal__content__question__expanded ol {
+          margin: 20px auto;
+          max-width: 500px;
+          list-style: square; }
         .mobile-nav__accordion-content .modal__content__question--expanded .modal__content__question__expanded {
           bottom: 0;
           max-height: 100%;
@@ -1066,6 +1101,9 @@ button {
           .modal--signup__content .modal__content__title {
             padding: 30px;
             font-size: 16px; } }
+      .modal--signup__content .modal__content__description {
+        font-size: 16px;
+        font-weight: normal; }
       .modal--signup__content .signup-form {
         position: relative;
         z-idnex: 2;
@@ -1114,7 +1152,7 @@ button {
       margin-bottom: 0;
       border-top: 1px solid #454545; }
   .modal--vimeo .modal__close {
-    top: 20px;
+    top: 10px;
     right: 20px; }
   .modal--vimeo .modal__content {
     position: relative;
@@ -1205,12 +1243,22 @@ button {
       transition: z-index 0s linear, opacity 0.5s linear; }
       .modal--help .modal__content__overlay--expanded > * {
         transition: opacity 0.5s linear 0s; }
+      .modal--help .modal__content__overlay--expanded a {
+        color: #ffffff;
+        text-decoration: underline; }
+      .modal--help .modal__content__overlay--expanded ul, .modal--help .modal__content__overlay--expanded ol {
+        margin: 20px auto;
+        max-width: 500px;
+        list-style: square; }
+      .modal--help .modal__content__overlay--expanded h5 {
+        max-width: 500px;
+        margin: 0 auto 20px; }
   .modal--help .modal__content__question {
     width: 50%;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    height: 270px;
+    min-height: 270px;
     padding: 30px 30px 30px 60px;
     border-bottom: 1px solid #f3ede1; }
     .modal--help .modal__content__question__expanded {
@@ -1229,12 +1277,15 @@ button {
       margin-bottom: 30px;
       flex: 0 0 auto; }
     .modal--help .modal__content__question p {
-      color: #ffffff;
-      flex: 1; }
-    .modal--help .modal__content__question a {
+      color: #ffffff; }
+      .modal--help .modal__content__question p a {
+        color: #ffffff;
+        text-decoration: underline; }
+    .modal--help .modal__content__question > a {
       color: #ffffff;
       font-size: 10px;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      margin-top: 20px; }
   .modal--display {
     visibility: visible;
     z-index: 4;
@@ -1313,7 +1364,7 @@ button {
     .schedule__header__switcher {
       width: 100%;
       padding: 15px 0;
-      margin-top: -30px;
+      margin-top: -15px;
       margin-bottom: 30px;
       left: 0;
       display: flex;
@@ -1378,7 +1429,7 @@ button {
       opacity: 0.5; }
   .schedule__content {
     display: flex;
-    flex: 1;
+    flex: 0 0 auto;
     height: calc(100% - 90px); }
     .schedule__content__details {
       position: relative;
@@ -1386,7 +1437,7 @@ button {
       overflow: hidden;
       height: 100%;
       overflow-y: auto;
-      padding-top: 100px;
+      padding-top: 60px;
       border-right: 1px solid #9e843d; }
     .schedule__content__calendar {
       width: 340px;
@@ -1425,10 +1476,14 @@ button {
       height: 18px;
       margin-bottom: 10px; }
     .schedule__holiday__title {
-      font-size: 30px;
-      line-height: 36px;
+      margin-top: 0;
+      font-size: 23px;
+      line-height: 26px;
       text-shadow: none;
-      color: #9e843d; }
+      color: #9e843d;
+      font-family: 'Galano Grotesque';
+      font-weight: 600;
+      font-style: normal; }
     .schedule__holiday__day {
       display: flex;
       flex-direction: column;
@@ -1450,7 +1505,8 @@ button {
         border-top: 1px solid #9e843d;
         border-bottom: 1px solid #9e843d;
         padding: 7.5px 0;
-        width: 100%; }
+        width: calc(100% - 60px);
+        margin: 0 auto 15px; }
         .schedule__holiday__day__heading strong {
           font-weight: 700;
           margin-bottom: 3px; }
@@ -1460,49 +1516,72 @@ button {
       margin: 40px; }
     .schedule__holiday__event {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-content: center;
       margin-bottom: 15px; }
+      .schedule__holiday__event h6 {
+        text-decoration: underline; }
+        @media (max-width: 767px) {
+          .schedule__holiday__event h6 {
+            font-size: 18px; } }
+      .schedule__holiday__event .atc {
+        margin: -10px 0 -15px; }
       .schedule__holiday__event__breakouts {
-        margin-left: -105px;
         margin-top: 5px; }
-        @media (max-width: 1023px) {
-          .schedule__holiday__event__breakouts {
-            margin-left: -100px; } }
         .schedule__holiday__event__breakouts .schedule__holiday__event__inner {
-          width: 300px; }
+          margin-top: 5px;
+          margin-bottom: 10px; }
+          .schedule__holiday__event__breakouts .schedule__holiday__event__inner > div {
+            flex: 1;
+            min-width: 55%; }
+            @media (max-width: 767px) {
+              .schedule__holiday__event__breakouts .schedule__holiday__event__inner > div {
+                min-width: 60%; } }
           .schedule__holiday__event__breakouts .schedule__holiday__event__inner .schedule__holiday__event__time {
-            font-size: 12px;
-            width: 80px;
-            text-align: left; }
+            font-size: 14px;
+            min-width: 0;
+            text-transform: lowercase; }
           .schedule__holiday__event__breakouts .schedule__holiday__event__inner h6 {
-            font-size: 12px; }
+            font-size: 15px;
+            line-height: 17px;
+            text-decoration: none; }
+          .schedule__holiday__event__breakouts .schedule__holiday__event__inner a {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #9e843d; }
       .schedule__holiday__event__details {
         width: 100%; }
       .schedule__holiday__event__inner {
         display: flex;
         align-items: flex-start;
         width: 480px;
-        max-width: 90%; }
+        max-width: 100%; }
         @media (max-width: 767px) {
           .schedule__holiday__event__inner {
             max-width: 100%; } }
+        .schedule__holiday__event__inner > div {
+          min-width: 55%; }
+          @media (max-width: 767px) {
+            .schedule__holiday__event__inner > div {
+              min-width: 60%; } }
       .schedule__holiday__event__details {
         width: 100%; }
       .schedule__holiday__event__time {
-        width: 190px;
         text-align: right;
-        flex: 0 0 auto;
-        margin-right: 25px; }
+        flex: 1;
+        text-transform: uppercase;
+        min-width: 0 !important;
+        padding-right: 25px; }
         @media (max-width: 767px) {
           .schedule__holiday__event__time {
-            width: 130px;
-            text-align: left;
-            margin-right: 20px; } }
+            text-align: right;
+            font-size: 14px;
+            line-height: 16px; } }
       .schedule__holiday__event__details {
         flex: 1; }
         @media (max-width: 767px) {
           .schedule__holiday__event__details {
-            max-width: calc(100% - 130px); } }
+            max-width: calc(100% - 145px); } }
         .schedule__holiday__event__details .p--small, .schedule__holiday__event__details .calendar__month .week .heading, .calendar__month .week .schedule__holiday__event__details .heading,
         .schedule__holiday__event__details .calendar__month .week .day, .calendar__month .week .schedule__holiday__event__details .day {
           margin: 5px 0; }
